@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: Euclid Circular A Regular;
+    font-weight: 400;
+    src: url(fonts/r.woff2) format("woff2");
+  }
+    @font-face {
+        font-family: Euclid Circular A Black;
+        font-weight: 700;
+        src: url(fonts/bl.woff2) format("woff2");
+    }
+    @font-face {
+        font-family: Euclid Circular A Light;
+        font-weight: 700;
+        src: url(fonts/l.woff2) format("woff2");
+    }
+}
