@@ -6,17 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="src/tailwind.css">
-    <script src="src/index.js"></script>
+    <script src="src/app.js"></script>
 </head>
-<body class="bg-day-bg text-day-text dark:bg-dark-bg dark:text-dark-text font-r flex flex-col text-1xl">
+<body class="
+            bg-day-bg 
+            text-day-text 
+            dark:bg-dark-bg 
+            dark:text-dark-text 
+            font-r 
+            flex flex-col 
+            text-1xl 
+            overflow-x-hidden">
     <!-- Navigation Header -->
-    <div class="z-50 fixed w-full" style="backdrop-filter: blur(20px);">
-        <div class=" flex justify-center p-5">
+    <div class="z-50 fixed w-full">
+        <div class="flex justify-center p-5" style="backdrop-filter: blur(20px);">
             <div class="flex justify-between list-none items-center">
-                    <li class="pr-20"><a href="#home">Home</a></li>
-                    <li class="pr-20"><a href="#about">About</a></li>
-                    <li class="pr-20"><a href="#background">Background</a></li>
-                    <li class="pr-20">Achievements</li>
+                    <li class="pr-20"><a href="#home" class="hover:border-b-2 border-day-select dark:border-dark-select">Home</a></li>
+                    <li class="pr-20"><a href="#about" class="hover:border-b-2 border-day-select dark:border-dark-select">About</a></li>
+                    <li class="pr-20"><a href="#background" class="hover:border-b-2 border-day-select dark:border-dark-select">Background</a></li>
+                    <li class="pr-20"><a href="#achievements" class="hover:border-b-2 border-day-select dark:border-dark-select">Achievements</a></li>
                     <li class="pr-20">Works</li>
                     <li class="pr-20">Services</li>
                     <li class="pr-20">Contact</li>
@@ -29,27 +37,20 @@
     </div>
     <!-- Main Content -->
         <!-- Home -->
-        <div id="home" class="flex items-center h-screen">
-            <div class="absolute h-full w-full">
-                <img class="absolute top-2/4 left-20 -translate-y-1/2" src="src/img/hero-bg 1.png">
-                <img class="absolute top-2/3 left-1/3 -translate-y-1/2" src="src/img/112 1.png">
-                <img class="absolute top-1/4 left-1/3 -translate-y-1/2" src="src/img/113 1.png">
-                <img class="absolute top-2/4 right-20 -translate-y-1/2" src="src/img/114 1.png">
-                <img class="absolute top-3/4 left-2/4 -translate-y-1/2" src="src/img/115 1.png">
+            <div id="home" class="grid gap-10 grid-rows-2 grid-cols-4 justify-center h-screen">
+                <div class=" bg-black row-span-2 rounded-full bg-no-repeat bg-cover bg-center" style="background-image:url('src/img/hero-bg 1.png')"></div>
+                <div class="bg-yellow-50 rounded-full bg-no-repeat bg-cover bg-center" style="background-image:url('src/img/113 1.png')"></div>
+                <div class="bg-blue-50 rounded-full bg-no-repeat bg-cover bg-center" style="background-image:url('src/img/112 1.png')"></div>
+                <div class="bg-red-50 row-span-2 rounded-full bg-no-repeat bg-cover bg-center" style="background-image:url('src/img/114 1.png')"></div>
+                <div class="bg-red-200 col-start-2 col-span-2 rounded-full bg-no-repeat bg-cover bg-center" style="background-image:url('src/img/115 1.png')"></div>
+                <h1 class="absolute text-9xl font-bl bottom-2/4 left-20 ">Gabriel Gonzales</h1>
             </div>
-            <div class="flex">
-                <h1 class="flex z-10 text-9xl font-bl pl-28">Gabriel Gonzales</h1>
-            </div>
-            
-        </div>
         <!-- About -->
         <div id="about" class="flex flex-row items-center h-screen">
-            <div class="flex">
-                <h1 class="absolute text-big font-bl opacity-10">Info</h1>
-            </div>
+                <h1 class="absolute -z-10 text-big font-bl opacity-10">Info</h1>
             <div class="flex pl-20 items-center h-full w-2/4 text-6xl font-bl">
                 <div>
-                    <h1>Gabriel Alexis F. Gonzales</h1>
+                    <h1>Gabriel Alexis Ferrer-Gonzales</h1>
                     <h1>May 12, 2006</h1>
                     <h1>gabriel@iamusic.ga</h1>
                     <br>
@@ -61,44 +62,100 @@
                 </div> 
             </div>
             <div class="flex w-2/4 h-full items-center justify-center">
-                <img class="w-5/6" src="src/img/115 1.png">
-                
+                <img class="w-5/6 rounded-full shadow-md" src="src/img/115 1.png">
             </div>
         </div>
         <!-- Background -->
         <div id="background" class="flex flex-row items-center h-screen">
-            <div class="flex">
                 <h1 class="absolute text-big font-bl opacity-10">Background</h1>
-            </div>
-            <div class="flex h-full pt-48 w-2/4 text-6xl font-bl justify-center">
                 <div>
-                    <div class="border-day-select dark:border-day-select border-l-8 pl-10">
-                        <h1 class="-z-10 text-8xl">Education</h1>
-                        <br>
-                        <h1 class="text-4xl">Don Bosco Technical Institute of Makati</h1>
-                        <h1 class="text-xl">2017 - Present</h1>
-                        <br>
-                        <h1 class="text-4xl">St. Mary's Academy - Pasay</h1>
-                        <h1 class="text-xl">2013 - 2016</h1>
-                    </div>
+                    <h1 class="text-6xl font-bl">Background</h1>
+                    <h1 class="text-4xl font-l">My Background</h1>
+                    <h1 class="text-2xl font-l">My Background</h1>
                 </div>
-            </div>
-            <div class="flex h-full pt-48 w-2/4 text-6xl font-bl justify-center">
                 <div>
-                    <div class="border-day-select dark:border-day-select border-l-8 pl-10">
-                        <h1 class="-z-10 text-8xl">Strand</h1>
-                        <br>
-                        <h1 class="text-4xl">Information and Communications Technology</h1>
-                        <h1 class="text-xl">2021 - Present</h1>
-                    </div>
                 </div>
-            </div>
         </div>
         <!-- Achievements -->
-        <div id="about" class="flex items-center h-screen">
-            <div class="flex"> 
+        <div id="achievements" class="flex h-screen">
                 <h1 class="absolute text-big font-bl opacity-10">Achievements</h1>
+            <div class="flex pt-48 text-6xl font-bl p-10">
+                    <div class="ach bg-yellow-50 w-screen flex flex-col flex-wrap border-day-select dark:border-dark-select border-l-8 pl-10">
+                        <div>
+                            <h1 class="text-4xl">Pre-School Valedictorian</h1>
+                            <h1 class="text-xl">Pasay Pre-Scdildohoolers - TLC</h1>
+                            <h1 class="text-xl">2012 (Kindergarten)</h1>
+                        </div>
+                        <br>
+                        <div>
+                            <h1 class="text-4xl">Math Quiz Bee - 3rd Place</h1>
+                            <h1 class="text-xl">St. Mary's Academy - Pasay Mathematics Month</h1>
+                            <h1 class="text-xl">2016 (Grade 3)</h1>
+                        </div>
+                        <br>
+                        <div>
+                            <h1 class="text-4xl">Math Quiz Bee Champion</h1>
+                            <h1 class="text-xl">St. Mary's Academy - Pasay Mathematics Month</h1>
+                            <h1 class="text-xl">2017 (Grade 4)</h1>
+                        </div>
+                        <br>
+                        <div>
+                            <h1 class="text-4xl">Singing Competition - 2nd Place</h1>
+                            <h1 class="text-xl">St. Mary's Academy</h1>
+                            <h1 class="text-xl">2017 (Grade 4)</h1>
+                        </div> 
+                        <br>
+                        <div>
+                            <h1 class="text-4xl">Makati Schools Press Conference - Participant</h1>
+                            <h1 class="text-xl">Don Bosco Technical Institute, Makati</h1>
+                            <h1 class="text-xl">2017 (Grade 5)</h1>
+                        </div>   
+                        <br>
+                        <div>
+                            <h1 class="text-4xl">English Broadcasting - Champion</h1>
+                            <h1 class="text-xl">Don Bosco Technical College, Mandaluyong</h1>
+                            <h1 class="text-xl">2018 (Grade 6)</h1>
+                        </div>
+                        <br>
+                        <div>
+                            <h1 class="text-4xl">Best Technical Director</h1>
+                            <h1 class="text-xl">Don Bosco Technical College, Mandaluyong</h1>
+                            <h1 class="text-xl">2018 (Grade 6)</h1>
+                        </div>
+                        <br>
+                        <div>
+                            <h1 class="text-4xl">Grade 6 Auxiliary Officer</h1>
+                            <h1 class="text-xl">Don Bosco Technical Institute, Makati</h1>
+                            <h1 class="text-xl">2018 (Grade 6)</h1>
+                        </div>
+                        <br>
+                        <div>
+                            <h1 class="text-4xl">Savio Singers - Alto</h1>
+                            <h1 class="text-xl">Don Bosco Technical Institute, Makati</h1>
+                            <h1 class="text-xl">2018 (Grade 6)</h1>
+                        </div>
+                        <br>
+                        <div>
+                            <h1 class="text-4xl">Boscorale - Bass 2</h1>
+                            <h1 class="text-xl">Don Bosco Technical Institute, Makati</h1>
+                            <h1 class="text-xl">2019 (Grade 7)</h1>
+                        </div>
+                        <br>
+                        <div>
+                            <h1 class="text-4xl">Academic Honors</h1>
+                            <h1 class="text-xl">Don Bosco Technical Institute, Makati</h1>
+                            <h1 class="text-xl">2020 (Grade 7)</h1>
+                        </div>
+                        <br>
+                        <div>
+                            <h1 class="text-4xl">Academic Honors</h1>
+                            <h1 class="text-xl">Don Bosco Technical Institute, Makati</h1>
+                            <h1 class="text-xl">2020 (Grade 7)</h1>
+                        </div>
+                        
+                    </div>
             </div>
         </div>
+        
 </body>
 </html>

@@ -26,7 +26,7 @@ module.exports = {
       'l': 'Euclid Circular A Light',
     },
     fontSize: {
-      'big': '20rem',
+      'big': '48rem',
     }
 
   },
