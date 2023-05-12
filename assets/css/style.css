@@ -1234,6 +1234,10 @@ section {
   background: #0678e3;
 }
 
+.golden-award {
+  color: gold;
+}
+
 @-webkit-keyframes animate-loading {
   0% {
     transform: rotate(0deg);
