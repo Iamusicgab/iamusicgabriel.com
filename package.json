@@ -11,8 +11,11 @@
 	},
 	"dependencies": {
 		"@astrojs/tailwind": "^5.1.0",
-		"@fontsource/lexend-mega": "^5.0.16",
+		"@fontsource-variable/lexend-mega": "^5.0.16",
 		"astro": "^4.0.8",
 		"tailwindcss": "^3.4.0"
+	},
+	"devDependencies": {
+		"daisyui": "^4.4.24"
 	}
 }

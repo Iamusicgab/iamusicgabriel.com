@@ -11,12 +11,22 @@ export default {
 			borange: "#FF4911",
 			bblue: "#3300FF",
 			blightviolet: "#C4A1FF",
+			bwhite: "#FFFFFF",
 		},
 		extend: {
 			fontFamily: {
-				sans: ["Lexend Mega", ...defaultTheme.fontFamily.sans],
+				sans: ["Lexend Mega Variable", ...defaultTheme.fontFamily.sans],
 			},
 		},
 	},
-	plugins: [],
+	daisyui: {
+		themes: [
+			{
+				mytheme: {
+					"base-100": "#FADF0B",
+				},
+			},
+		],
+	},
+	plugins: [require("daisyui")],
 };

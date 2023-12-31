@@ -1,0 +1,15 @@
+---
+const { color, text, textColor, href } = Astro.props;
+---
+
+<a href={href} class="w-fit">
+	<div
+		class={`${color} flex flex-col gap-5
+	md:flex-row-reverse justify-between items-center p-5 border-4 rounded-xl drop-shadow-[-5px_7px_rgba(0,0,0,1)] transition-all hover:drop-shadow-[-10px_13px_rgba(0,0,0,1)] hover:scale-105`}
+	>
+		<span
+			class={`text-xl md:text-2xl font-bold flex text-left ${textColor} w-full md:max-w-screen-sm`}
+			>{text}</span
+		>
+	</div>
+</a>

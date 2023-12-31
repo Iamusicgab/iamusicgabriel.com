@@ -1,0 +1,11 @@
+---
+const { color, text, textColor } = Astro.props;
+---
+
+<div
+	class={`${color} w-fit max-w-md flex justify-center p-2 border-4 rounded-xl drop-shadow-[-5px_7px_rgba(0,0,0,1)]`}
+>
+	<span class={`text-md md:text-xl flex text-center items-center ${textColor}`}
+		>{text}</span
+	>
+</div>
