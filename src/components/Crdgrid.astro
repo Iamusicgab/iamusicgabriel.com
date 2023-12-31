@@ -1,0 +1,20 @@
+---
+const { color, text, pic, textColor, href } = Astro.props;
+
+const trimmedString = () => {
+	if (text.length > 24) {
+		return text.substring(0, 24) + "...";
+	} else {
+		return text;
+	}
+};
+---
+
+<a href={href} class="w-full max-w-screen-lg">
+	<div
+		class={`${color} flex flex-col gap-5 max-w-52 max-h-screen-lg justify-between items-center p-5 border-4 rounded-xl drop-shadow-[-5px_7px_rgba(0,0,0,1)] transition-all hover:drop-shadow-[-10px_13px_rgba(0,0,0,1)] hover:scale-105`}
+	>
+		<img src="../../public/hero.png" class="aspect-1" />
+		<span class="text-md">{trimmedString}</span>
+	</div>
+</a>
