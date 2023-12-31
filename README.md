@@ -1,2 +1,2 @@
 # Iamusicgabriel.com
-This is the source code for my bio website. It is hosted with GitHub Pages with my own custom domain pointing to https://iamusicgabriel.com. Updated to Astro version 4. Currently under development.
+This is the source code for my bio website. Righr now, it is hosted with Vercel with my own custom domain pointing to https://iamusicgabriel.com. Updated to Astro version 4. Currently under development in Beta.
