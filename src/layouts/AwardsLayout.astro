@@ -16,7 +16,7 @@ import Nav from "../layouts/Nav.astro";
 	</head>
 	<body class="flex flex-col items-center">
 		<Nav />
-		<container class="flex p-8 max-w-screen-xl">
+		<container class="flex flex-col gap-10 p-8 max-w-screen-xl">
 			<div class="flex flex-col gap-4 items-center">
 				<Placeholder
 					color="bg-bblue"
@@ -36,6 +36,7 @@ import Nav from "../layouts/Nav.astro";
 					/>
 				</div>
 			</div>
+			<slot />
 		</container>
 	</body>
 </html>

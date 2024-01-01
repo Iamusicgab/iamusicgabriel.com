@@ -28,5 +28,8 @@ export default {
 			},
 		],
 	},
+	future: {
+		hoverOnlyWhenSupported: true,
+	},
 	plugins: [require("daisyui")],
 };

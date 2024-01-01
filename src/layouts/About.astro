@@ -1,0 +1,51 @@
+---
+import Placeholder from "../components/Placeholder.astro";
+import Pic from "../components/Pic.astro";
+import SmallPlaceholder from "../components/SmallPlaceholder.astro";
+---
+
+<container
+	class="w-full max-w-screen-2xl p-5 gap-10 flex flex-col items-center"
+>
+	<Placeholder color="bg-borange" text="About Me" textColor="text-bwhite" />
+	<div
+		class="flex flex-col md:flex-row gap-10 w-full max-w-screen-lg justify-around items-center"
+	>
+		<Pic
+			src="https://lh3.googleusercontent.com/pw/ABLVV86-S1gNYlaYYWLltT0BngbNhx8upa8v-I63jKzAJRc6QS7SDhiAdr4sgYXLYSWRKCWTanOea02QRbFx1GStPJnTKEiotbM92BEm683AlvH-u11LdWjbJbsV9Q0ORD9ejAlDQEtWwqir9aFJvwqdtufGZt4eDKUO3LWkZwnwZmMAbKD_6ev67iqZIxvrN0BN8Y6dozQGThFla_3SBE-u8Nknn9VwxAEvU-XFxIWCE0TFdhYbS77gU1jQ3ZRL9F8odwzJpv_gNk18-lsskoXDGya6Jd9bszmjwKDZcRTL1vT8Vi24SSbI15gSp9nJiILZliEV8eW72e5jhkmf6bnrEiRUbXnS7nDVWwVTFha12GLhvH1w7oJxyHNhaLvFr48NJF4LjHVigm2nv9SlhV80oOeGKwgNkjlyhA5c00dnZsM2GgCEpNFscH1pdUJgYGtZTPqzZUkdenTgO2EmzIOuU1tyhJAu06558YIqEyzGn41Bj8CqWln9WnaAdy_Wc1rVgfMJJXRYDV_ngg5lzT4XuzUnUfjgizjtwVp01Eqc9P4G1Cj0YX_y-_U9Cx0XsUtW8nKbkeIMa3_R7A3frMnQEGuORXEy_T6lVLMkNw0Zwr_oC7FALUV0-SmvkABIqlQe-z7PtOEs4Lxw-gNZLWX3h1HV_IfBNEL0G9RMzsF0KUyys9re5cKBLTzIQ8dObtW7ISPiCfZEKhZWp7XdjAqaz5e0_oOiSy8XZv6qSfGdXh5DCnrtmWqnjsvVpnT8d2MXo0n0GwCHml1EOQLqe4tNVfrKlz4uHwool0DvJ0PbJcjBotCFB5TBMpavm1QVHKj189cmEBzccdrniMNAkNqxHtA4KtdermWZegl_Klsd_an7dK-xJEGGwpE0itEi3EqzVmo=w460-h460-s-no-gm?authuser=0"
+			aspect="aspect-[1/1]"
+			svg="/star3.svg"
+			svg2="/heart.svg"
+			rotate="rotate-6"
+		/>
+		<p class="max-w-sm text-center md:text-right">
+			I’m <b>Gabriel Alexis Gonzales</b>, aka <b>Iamusicgabriel</b>. Student at <b
+				>Don Bosco Makati</b
+			>. A <b>Student leader, front-end dev, video editor, artist!</b>
+		</p>
+	</div>
+	<div
+		class="flex flex-col md:flex-row-reverse gap-10 w-full max-w-screen-lg justify-around items-center"
+	>
+		<Pic
+			src="https://scontent.fmnl4-6.fna.fbcdn.net/v/t39.30808-6/322470243_2155362127981884_3992501703177060232_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=9c7eae&_nc_eui2=AeFh67dlgTxzfP0f2BFpKGRZ-6IdzJzLmrf7oh3MnMuat_NcYZQPSWNwWs9SyOMT6tWuak7deCDYzs7ted8SszI6&_nc_ohc=V07L1L2Ae-kAX80kaeV&_nc_ht=scontent.fmnl4-6.fna&oh=00_AfCX5tnfD6LBb58yrCHbg2xv7tLnJ4kRkLucA3rVXA921g&oe=6597391E"
+			aspect="aspect-[1/1]"
+			svg="/ribbon.svg"
+			svg2="/star2.svg"
+			rotate="-rotate-6"
+		/>
+		<div class="flex flex-col gap-4 items-center md:items-start">
+			<SmallPlaceholder color="bg-bwhite" text="intp-t" />
+			<SmallPlaceholder color="bg-bwhite" text="adventure time fan" />
+			<div class="indicator">
+				<span class="indicator-item"
+					><img src="/pb.png" class="w-10 rotate-12" /></span
+				>
+				<SmallPlaceholder color="bg-bwhite" text="i <3 bonnibel" />
+			</div>
+
+			<SmallPlaceholder color="bg-bwhite" text="nerd 🤓" />
+			<SmallPlaceholder color="bg-bwhite" text="single 😆😆😆" />
+		</div>
+	</div></container
+>

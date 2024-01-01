@@ -1,0 +1,16 @@
+---
+const { src, svg, svg2, aspect, rotate } = Astro.props;
+---
+
+<div
+	class={`grid grid-cols-1 items-center self-center indicator bg-borange rounded-xl ${rotate}`}
+>
+	<span class="indicator-item"><img class="w-14 md:w-20" src={svg} /></span>
+	<span class="indicator-item indicator-bottom indicator-start"
+		><img class="w-14 md:w-20" src={svg2} /></span
+	>
+	<img
+		class={`rounded-xl border-8 max-w-48 lg:max-w-64 aspect-[3/4] object-cover drop-shadow-[-5px_7px_rgba(0,0,0,1)] ${aspect} `}
+		src={src}
+	/>
+</div>
