@@ -5,6 +5,7 @@ import Notables from "../layouts/Notables.astro";
 import Works from "../layouts/Works.astro";
 import Footer from "../layouts/Footer.astro";
 import About from "../layouts/About.astro";
+import Loading from "../layouts/Loading.astro";
 import "@fontsource-variable/lexend-mega";
 ---
 
@@ -16,12 +17,27 @@ import "@fontsource-variable/lexend-mega";
 		<meta name="generator" content={Astro.generator} />
 		<title>Iamusicgabriel</title>
 	</head>
-	<body class="flex flex-col items-center bg-byellow">
-		<Nav />
-		<Landing />
-		<About />
-		<Notables />
-		<Works />
-		<Footer />
+	<script>
+		window.onload = () => {
+			setTimeout(() => {
+				document.querySelector("#loading").classList.add("hidden");
+				document.querySelector("#dom").classList.remove("hidden");
+				document.querySelector("#dom").classList.add("flex");
+			}, 400);
+		};
+	</script>
+
+	<body class="bg-byellow">
+		<div id="loading">
+			<Loading class="loading" />
+		</div>
+		<div id="dom" class="hidden flex-col items-center w-full">
+			<Nav />
+			<Landing />
+			<About />
+			<Notables />
+			<Works />
+			<Footer />
+		</div>
 	</body>
 </html>

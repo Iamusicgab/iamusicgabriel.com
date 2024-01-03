@@ -4,6 +4,7 @@ import SmallPlaceholder from "../components/SmallPlaceholder.astro";
 import Placeholder from "../components/Placeholder.astro";
 import "@fontsource-variable/lexend-mega";
 import Nav from "../layouts/Nav.astro";
+import Loading from "./Loading.astro";
 ---
 
 <html>
@@ -14,29 +15,43 @@ import Nav from "../layouts/Nav.astro";
 		<meta name="generator" content={Astro.generator} />
 		<title>{frontmatter.title} - Iamusicgabriel</title>
 	</head>
-	<body class="flex flex-col items-center">
-		<Nav />
-		<container class="flex flex-col gap-10 p-8 max-w-screen-xl">
-			<div class="flex flex-col gap-4 items-center">
-				<Placeholder
-					color="bg-bblue"
-					text={frontmatter.title}
-					textColor="text-bwhite"
-				/>
-				<div class="flex flex-col md:flex-row gap-2 justify-center">
-					<SmallPlaceholder
-						color="bg-blightblue"
-						text={frontmatter.subtitle}
-						textColor=""
-					/>
-					<SmallPlaceholder
-						color="bg-borange"
-						text={frontmatter.date}
+	<script>
+		window.onload = () => {
+			setTimeout(() => {
+				document.querySelector("#loading").classList.add("hidden");
+				document.querySelector("#dom").classList.remove("hidden");
+				document.querySelector("#dom").classList.add("flex");
+			}, 300);
+		};
+	</script>
+	<body class="">
+		<div id="loading">
+			<Loading class="loading" />
+		</div>
+		<div id="dom" class="w-screen flex flex-col items-center">
+			<Nav />
+			<container class="flex flex-col gap-10 p-8 max-w-screen-xl">
+				<div class="flex flex-col gap-4 items-center">
+					<Placeholder
+						color="bg-bblue"
+						text={frontmatter.title}
 						textColor="text-bwhite"
 					/>
+					<div class="flex flex-col md:flex-row gap-2 justify-center">
+						<SmallPlaceholder
+							color="bg-blightblue"
+							text={frontmatter.subtitle}
+							textColor=""
+						/>
+						<SmallPlaceholder
+							color="bg-borange"
+							text={frontmatter.date}
+							textColor="text-bwhite"
+						/>
+					</div>
 				</div>
-			</div>
-			<slot />
-		</container>
+				<slot />
+			</container>
+		</div>
 	</body>
 </html>
