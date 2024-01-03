@@ -1,11 +1,10 @@
 ---
 import Placeholder from "../components/Placeholder.astro";
-import CrdPlaceholder from "../components/CrdPlaceholder.astro";
 import Crdgrid from "../components/Crdgrid.astro";
 import Button from "../components/Button.astro";
 interface Frontmatter {
 	title: string;
-	subtitle: string;
+	picture: string;
 	date: string;
 }
 const posts = await Astro.glob<Frontmatter>("../pages/works/*.md");
@@ -18,15 +17,31 @@ posts.sort((a, b) => {
 
 <container class="w-full max-w-screen-2xl p-5 gap-5 flex flex-col items-center">
 	<Placeholder color="bg-bpink" text="Works" textColor="text-bwhite" />
-	<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-		<Crdgrid color="bg-bwhite" text="testing of text faweff  ffawwfwa f" />
+	<div class="flex w-full max-w-screen-lg mt-2">
+		<span>Recent</span>
 	</div>
-
+	<div
+		class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 gap-5 w-full max-w-screen-md place-items-center align-middle"
+	>
+		{
+			posts
+				.slice(0, 3)
+				.map((post) => (
+					<Crdgrid
+						text={post.frontmatter.title}
+						href={post.url}
+						pic={post.frontmatter.picture}
+						date={post.frontmatter.date}
+					/>
+				))
+		}
+	</div>
+	<Button color="bg-blightviolet" text="View More" href="/works" />
 	<iframe
 		style="border-radius:12px"
 		src="https://open.spotify.com/embed/artist/2mWgy6G91EQdTadUqXwws4?utm_source=generator"
 		height="400"
 		allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
 		loading="lazy"
-		class="shadow-2xl w-full md:max-w-xl"></iframe>
+		class="shadow-xl w-full md:max-w-xl"></iframe>
 </container>

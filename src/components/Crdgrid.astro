@@ -1,20 +1,23 @@
 ---
-const { color, text, pic, textColor, href } = Astro.props;
-
-const trimmedString = () => {
-	if (text.length > 24) {
-		return text.substring(0, 24) + "...";
-	} else {
-		return text;
-	}
-};
+const { text, href, pic, date } = Astro.props;
 ---
 
-<a href={href} class="w-full max-w-screen-lg">
+<a
+	style={{
+		backgroundImage: `url(${pic})`,
+	}}
+	href={href}
+	class={`flex flex-col aspect-[16/9] sm:aspect-[3/4] max-w-md items-center border-4 rounded-xl drop-shadow-[-5px_7px_rgba(0,0,0,1)] transition-all hover:drop-shadow-[-10px_13px_rgba(0,0,0,1)] hover:scale-105 bg-center bg-cover w-full`}
+>
 	<div
-		class={`${color} flex flex-col gap-5 max-w-52 max-h-screen-lg justify-between items-center p-5 border-4 rounded-xl drop-shadow-[-5px_7px_rgba(0,0,0,1)] transition-all hover:drop-shadow-[-10px_13px_rgba(0,0,0,1)] hover:scale-105`}
+		class="flex-col items-end w-full h-full p-5 lg:p-2 rounded-lg bg-[#000000] bg-opacity-10"
 	>
-		<img src="../../public/hero.png" class="aspect-1" />
-		<span class="text-md">{trimmedString}</span>
+		<span
+			class="text-md text-center flex flex-col justify-between items-end text-bwhite h-full w-full"
+			><span class="self-start text-left text-xs">{date}</span><span
+				class="self-right text-right text-sm md:text-md md:self-center md:text-center"
+				>{text}</span
+			></span
+		>
 	</div>
 </a>

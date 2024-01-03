@@ -14,6 +14,9 @@ export default {
 			bwhite: "#FFFFFF",
 		},
 		extend: {
+			backgroundImage: {
+				pic: "./hero.png",
+			},
 			fontFamily: {
 				sans: ["Lexend Mega Variable", ...defaultTheme.fontFamily.sans],
 			},
