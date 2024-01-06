@@ -20,5 +20,8 @@ layout: ../../layouts/AwardsLayout.astro
 
 # **_The best day of my life..._**
 
-This is a test paragraph
-oiaejf poiaewfawefa opiwafjopiawf ioafajffa lawfaofn o f
+In all my life, I never thought that I would've received one of the prestigious awards in my city, being ranked 4th place in the Ten Outstanding Students Students of Makati. This is a collaborative project by the City Government of Makati Education Department and the Department of Education's Schools Divions office in Makati City, in partnership with Junior Chamber International (JCI) Makati. The search aims to recognize holistic Makatizen students who value their God-given knowledge, talent, skills, competencies, and leadership potentials.
+
+There are so many people that I want to thank for the recognition that I received, but the person who I want to thank the most is my Student Council Adviser, Sir Jeysi. I still remember him inviting me in the competition. He told me that it wouldn't be bad to try to join the competition, and so I did. And who would've thought that I would be one of the students to be included in the grand recognition in the Makati City Hall.
+
+It was a short but one of the best journey that I've experienced in my life.
