@@ -27,6 +27,7 @@ export default {
 					"base-100": "#FADF0B",
 				},
 			},
+			"retro",
 		],
 	},
 	future: {
