@@ -13,7 +13,7 @@ import "@fontsource-variable/lexend-mega";
 		<meta name="generator" content={Astro.generator} />
 		<title>Works - Iamusicgabriel</title>
 	</head>
-	<script>
+	<script is:inline>
 		window.onload = () => {
 			setTimeout(() => {
 				document.querySelector("#loading").classList.add("hidden");
@@ -22,9 +22,9 @@ import "@fontsource-variable/lexend-mega";
 			}, 300);
 		};
 	</script>
-	<body class="bg-byellow">
+	<body class="bg-byellow" class="">
 		<div id="loading">
-			<Loading class="loading" />
+			<Loading />
 		</div>
 		<div id="dom" class="hidden flex-col items-center">
 			<Nav />

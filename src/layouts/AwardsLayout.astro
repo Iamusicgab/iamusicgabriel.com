@@ -15,7 +15,7 @@ import Loading from "./Loading.astro";
 		<meta name="generator" content={Astro.generator} />
 		<title>{frontmatter.title} - Iamusicgabriel</title>
 	</head>
-	<script>
+	<script is:inline>
 		window.onload = () => {
 			setTimeout(() => {
 				document.querySelector("#loading").classList.add("hidden");
@@ -25,8 +25,8 @@ import Loading from "./Loading.astro";
 		};
 	</script>
 	<body class="">
-		<div id="loading">
-			<Loading class="loading" />
+		<div id="loading" class="">
+			<Loading />
 		</div>
 		<div id="dom" class="w-screen flex flex-col items-center">
 			<Nav />
