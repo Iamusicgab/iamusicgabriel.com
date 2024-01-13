@@ -14,16 +14,38 @@ import Loading from "./Loading.astro";
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{frontmatter.title} - Iamusicgabriel</title>
-	</head>
-	<script is:inline>
-		window.onload = () => {
-			setTimeout(() => {
-				document.querySelector("#loading").classList.add("hidden");
-				document.querySelector("#dom").classList.remove("hidden");
-				document.querySelector("#dom").classList.add("flex");
-			}, 300);
-		};
-	</script>
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta
+			property="og:title"
+			content={`${frontmatter.title} - Iamusicgabriel`}
+		/>
+		<meta property="og:image" content="https://iamusicgabriel.com/meta.jpg" />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta
+			property="twitter:title"
+			content={`${frontmatter.title} - Iamusicgabriel`}
+		/>
+		<meta
+			property="twitter:image"
+			content="https://iamusicgabriel.com/meta.jpg"
+		/>
+		<!-- Meta Tags Generated with https://metatags.io -->
+
+		<script is:inline>
+			window.onload = () => {
+				setTimeout(() => {
+					document.querySelector("#loading").classList.add("hidden");
+					document.querySelector("#dom").classList.remove("hidden");
+					document.querySelector("#dom").classList.add("flex");
+				}, 300);
+			};
+		</script></head
+	>
+
 	<body class="">
 		<div id="loading" class="">
 			<Loading />
