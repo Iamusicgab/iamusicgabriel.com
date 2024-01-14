@@ -2,6 +2,76 @@
 import Placeholder from "../components/Placeholder.astro";
 import Pic from "../components/Pic.astro";
 import SmallPlaceholder from "../components/SmallPlaceholder.astro";
+import QueryString from "query-string";
+const refresh_token =
+	"AQCbk08KrrF2zgoqQMEWZb-Yppfj6tet4wKlQrlRB86hDNmTy0Vn-yRL98sRNE68lfKGjHG3cb50jj2hVm77bo0-fewk-LMLo_MVHi3pSU_JfdNqjcZnyyuugytFezQSRcY";
+const basic =
+	"Mjg5NzdmM2FmMjY4NDM5NmIxYjkyYWU0NjdiMTUzMjg6YWQ4MzdkNDcyMWIzNDNmNDk2OWE2NmI4M2E4Y2VjNzU=";
+
+const getAccessToken = async () => {
+	const url = "https://accounts.spotify.com/api/token";
+	const payload = {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/x-www-form-urlencoded",
+			Authorization: `Basic ${basic}`,
+		},
+		body: QueryString.stringify({
+			grant_type: "refresh_token",
+			refresh_token,
+		}),
+	};
+
+	const res = await fetch(url, payload);
+	const data = await res.json();
+	return data;
+};
+
+const getTopArtists = async () => {
+	const { access_token } = await getAccessToken();
+	const url =
+		"https://api.spotify.com/v1/me/top/artists?time_range=short_term&limit=1";
+	const payload = {
+		method: "GET",
+		headers: {
+			Authorization: `Bearer ${access_token}`,
+		},
+	};
+	const res = await fetch(url, payload);
+	const data = await res.json();
+	return data;
+};
+const getTopTracks = async () => {
+	const { access_token } = await getAccessToken();
+	const url =
+		"https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=5";
+	const payload = {
+		method: "GET",
+		headers: {
+			Authorization: `Bearer ${access_token}`,
+		},
+	};
+	const res = await fetch(url, payload);
+	const data = await res.json();
+	return data;
+};
+
+const recentlyPlayed = async () => {
+	const { access_token } = await getAccessToken();
+	const url = "https://api.spotify.com/v1/me/player/recently-played";
+	const payload = {
+		method: "GET",
+		headers: {
+			Authorization: `Bearer ${access_token}`,
+		},
+	};
+	const res = await fetch(url, payload);
+	const data = await res.json();
+	return data;
+};
+
+const tracks = await getTopTracks();
+const played = await recentlyPlayed();
 ---
 
 <container
@@ -48,5 +118,121 @@ import SmallPlaceholder from "../components/SmallPlaceholder.astro";
 			<SmallPlaceholder color="bg-bwhite" text="single 😆😆😆" />
 		</div>
 	</div>
-	<div class="w-full max-w-screen-lg bg-bpink">fawefwae</div>
+	<!-- Spotify shizz -->
+	<SmallPlaceholder color="bg-green-400" text="Spotify shizz" />
+	<div
+		class="flex flex-col justify-center items-center gap-2 w-full max-w-screen-lg"
+	>
+		<SmallPlaceholder
+			color="bg-bblue"
+			text="recently played"
+			textColor="text-bwhite"
+		/>
+		{
+			(
+				<a
+					class={`bg-bwhite w-full max-w-sm md:max-w-lg flex flex-row justify-center p-2 border-4 border-bblack rounded-xl shadow-[-5px_7px_rgba(0,0,0,1)] hover:scale-105 transition-all`}
+					href={played.items[0].track.external_urls.spotify}
+				>
+					<div class="flex flex-col w-full">
+						<span class={`text-sm md:text-lg text-left`}>
+							{() => {
+								const name = played.items[0].track.name;
+								if (name.length > 30) {
+									return name.slice(0, 30) + "...";
+								}
+								return name;
+							}}
+						</span>
+						<span class={`text-xs md:text-sm text-left items-center`}>
+							{played.items[0].track.artists[0].name}
+						</span>
+					</div>
+				</a>
+			)
+		}
+	</div>
+	<div
+		class="flex flex-col md:flex-row gap-12 w-full max-w-screen-lg items-center justify-between md:p-10"
+	>
+		<!-- Top Artist API -->
+		{
+			async () => {
+				const res = await getTopArtists();
+
+				return (
+					<div class="indicator -rotate-6">
+						<div
+							class={`bg-borange w-fit max-w-md flex justify-center p-2 border-4 border-bblack rounded-xl shadow-[-5px_7px_rgba(0,0,0,1)] indicator-item indicator-center xl:indicator-start indicator-top`}
+						>
+							<span
+								class={`text-md md:text-xl flex text-center items-center text-bwhite`}
+							>
+								top artist
+								<slot />
+							</span>
+						</div>
+						<div
+							class={`bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 w-fit max-w-md flex justify-center p-2 border-4 border-bblack rounded-xl shadow-[-5px_7px_rgba(0,0,0,1)] indicator-item indicator-center xl:indicator-end indicator-bottom`}
+						>
+							<span
+								class={`text-md md:text-xl flex text-center items-center text-bwhite`}
+							>
+								{res.items[0].name}
+								<slot />
+							</span>
+						</div>
+
+						<Pic src={res.items[0].images[0].url} aspect="aspect-square" />
+					</div>
+				);
+			}
+		}
+
+		<!-- Top Tracks API -->
+
+		<div
+			class="flex flex-col items-center md:items-end justify-center w-full gap-2"
+		>
+			<div
+				class={`bg-borange w-fit max-w-md flex justify-center p-2 border-4 border-bblack rounded-xl shadow-[-5px_7px_rgba(0,0,0,1)] indicator-item indicator-center xl:indicator-start indicator-top`}
+			>
+				<span
+					class={`text-md md:text-xl flex text-center items-center text-bwhite`}
+				>
+					top songs
+					<slot />
+				</span>
+			</div>
+			{
+				tracks.items.map((res, index) => (
+					<a
+						class={`bg-bwhite w-full max-w-sm md:max-w-lg flex flex-row justify-center p-2 border-4 border-bblack rounded-xl shadow-[-5px_7px_rgba(0,0,0,1)] hover:scale-105 transition-all`}
+						href={res.external_urls.spotify}
+					>
+						<span
+							class={`text-xs md:text-sm flex text-center items-center mr-2`}
+						>
+							{index + 1}
+							<slot />
+						</span>
+						<div class="flex flex-col w-full">
+							<span class={`text-sm md:text-lg text-right`}>
+								{() => {
+									const name = res.name;
+									if (name.length > 28) {
+										return name.slice(0, 28) + "...";
+									}
+									return name;
+								}}
+							</span>
+							<span class={`text-xs md:text-sm text-right items-center`}>
+								{res.artists[0].name}
+							</span>
+						</div>
+					</a>
+				))
+			}
+		</div>
+	</div>
 </container>

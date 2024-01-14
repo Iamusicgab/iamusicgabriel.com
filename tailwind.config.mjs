@@ -28,7 +28,6 @@ export default {
 				},
 				mythemedark: {
 					"base-100": "#151515",
-					white: "#FFFFFF",
 				},
 			},
 		],

@@ -16,6 +16,7 @@
 		"@vercel/analytics": "^1.1.1",
 		"astro": "^4.0.8",
 		"astro-breadcrumbs": "^1.8.1",
+		"query-string": "^8.1.0",
 		"tailwindcss": "^3.4.0"
 	},
 	"devDependencies": {

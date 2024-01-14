@@ -9,6 +9,8 @@ import Loading from "../layouts/Loading.astro";
 import SmallPlaceholder from "../components/SmallPlaceholder.astro";
 import IndexNav from "../layouts/IndexNav.astro";
 import "@fontsource-variable/lexend-mega";
+import Skills from "../layouts/Skills.astro";
+import Socials from "../layouts/Socials.astro";
 ---
 
 <html lang="en" data-theme="mytheme">
@@ -68,13 +70,15 @@ import "@fontsource-variable/lexend-mega";
 		</div>
 		<div
 			id="dom"
-			class="hidden flex-col items-center w-full transition-all scale-0"
+			class="hidden flex-col items-center w-full transition-all scale-0 gap-5"
 		>
 			<IndexNav />
 			<Landing />
 			<About />
+			<Skills />
 			<Notables />
 			<Works />
+			<Socials />
 			<Footer />
 		</div>
 	</body>
