@@ -67,6 +67,20 @@ import Loading from "./Loading.astro";
 						/>
 					</div>
 				</div>
+				<div
+					class="grid grid-cols-1 items-center self-center indicator rotate-6"
+				>
+					<span class="indicator-item"
+						><img class="w-14 md:w-20" src="/star3.svg" /></span
+					>
+					<span class="indicator-item indicator-start indicator-bottom"
+						><img class="w-14 md:w-20" src="/star2.svg" /></span
+					>
+					<img
+						class="rounded-xl border-8 border-bblack max-w-48 md:max-w-xs aspect-[3/4] object-cover drop-shadow-[5px_7px_rgba(0,0,0,1)]"
+						src={frontmatter.picture}
+					/>
+				</div>
 				<slot />
 			</container>
 		</div>
