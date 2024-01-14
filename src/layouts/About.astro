@@ -3,10 +3,8 @@ import Placeholder from "../components/Placeholder.astro";
 import Pic from "../components/Pic.astro";
 import SmallPlaceholder from "../components/SmallPlaceholder.astro";
 import QueryString from "query-string";
-const refresh_token =
-	"AQCbk08KrrF2zgoqQMEWZb-Yppfj6tet4wKlQrlRB86hDNmTy0Vn-yRL98sRNE68lfKGjHG3cb50jj2hVm77bo0-fewk-LMLo_MVHi3pSU_JfdNqjcZnyyuugytFezQSRcY";
-const basic =
-	"Mjg5NzdmM2FmMjY4NDM5NmIxYjkyYWU0NjdiMTUzMjg6YWQ4MzdkNDcyMWIzNDNmNDk2OWE2NmI4M2E4Y2VjNzU=";
+const refresh_token = process.env.REFRESH_TOKEN;
+const basic = process.env.BASIC;
 
 const getAccessToken = async () => {
 	const url = "https://accounts.spotify.com/api/token";
