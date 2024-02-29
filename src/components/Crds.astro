@@ -1,5 +1,5 @@
 ---
-const { pic, text, color, alt, svg } = Astro.props;
+const { pic, text, color, alt, svg, textStyle } = Astro.props;
 ---
 
 <div
@@ -15,6 +15,6 @@ const { pic, text, color, alt, svg } = Astro.props;
 		/>
 	</div>
 	<div class="py-2 text-center text-xs md:text-sm lg:text-xl">
-		<a href="/">{text}</a>
+		<a href="/" class={textStyle}>{text}</a>
 	</div>
 </div>

@@ -117,6 +117,7 @@ const played = await recentlyPlayed();
 			<SmallPlaceholder color="bg-bwhite" text="single 😆😆😆" />
 		</div>
 	</div>
+	<div class="divider"></div>
 	<!-- Spotify shizz -->
 	<SmallPlaceholder color="bg-green-400" text="Spotify shizz" />
 	<div
@@ -134,7 +135,7 @@ const played = await recentlyPlayed();
 					href={played.items[0].track.external_urls.spotify}
 				>
 					<div class="flex flex-col w-full justify-center">
-						<span class={`text-sm md:text-lg text-left`}>
+						<span class={`text-sm md:text-lg text-left text-bblack`}>
 							{() => {
 								const name = played.items[0].track.name;
 								if (name.length > 30) {
@@ -143,7 +144,7 @@ const played = await recentlyPlayed();
 								return name;
 							}}
 						</span>
-						<span class={`text-xs md:text-sm text-left items-center`}>
+						<span class={`text-xs md:text-sm text-left items-center text-bblack`}>
 							{played.items[0].track.artists[0].name}
 						</span>
 					</div>
@@ -215,7 +216,9 @@ const played = await recentlyPlayed();
 						href={res.external_urls.spotify}
 					>
 						<div class="flex items-center mx-2 gap-2 justify-center">
-							<span class={`text-xs md:text-sm text-center items-center `}>
+							<span
+								class={`text-xs md:text-sm text-center items-center text-bblack`}
+							>
 								{index + 1}
 							</span>
 							<img
@@ -224,7 +227,7 @@ const played = await recentlyPlayed();
 							/>
 						</div>
 						<div class="flex flex-col w-full justify-center">
-							<span class={`text-sm md:text-lg text-right`}>
+							<span class={`text-sm md:text-lg text-right text-bblack`}>
 								{() => {
 									const name = res.name;
 									if (name.length > 28) {
@@ -233,7 +236,9 @@ const played = await recentlyPlayed();
 									return name;
 								}}
 							</span>
-							<span class={`text-xs md:text-sm text-right items-center`}>
+							<span
+								class={`text-xs md:text-sm text-right items-center text-bblack`}
+							>
 								{res.artists[0].name}
 							</span>
 						</div>
