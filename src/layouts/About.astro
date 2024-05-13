@@ -4,6 +4,7 @@ import Placeholder from "../components/Placeholder.astro";
 import Pic from "../components/Pic.astro";
 import SmallPlaceholder from "../components/SmallPlaceholder.astro";
 import QueryString from "query-string";
+import Button from "../components/Button.astro";
 const refresh_token = process.env.REFRESH_TOKEN;
 const basic = process.env.BASIC;
 
@@ -81,20 +82,32 @@ const played = await recentlyPlayed();
 		class="flex flex-col md:flex-row gap-10 w-full max-w-screen-lg justify-around items-center"
 	>
 		<Pic
-			src="https://lh3.googleusercontent.com/pw/ABLVV870ec4Q3yDc7iE-HLxMJn3yTSMM-7znh4aRhsjQzyzBbUezTaHq8eczKvVCRecgPUUBdVYyp_9EoBNXi5HPlsjTiKXS0QkhOYAXl6116VkuSeqndQjO=w2400"
+			src="https://lh3.googleusercontent.com/pw/AP1GczNSD59P9b05u0U8O9sShhFyQo_UCJQS6oxTlmy7nVXD_U9oNUnDQk1ivF_DXIGDGXJ000_KakZ6f6offs6kxnTKlOGpdqlSOlkYmzLmbmc84b4EKF4iuEYZ63osDFg5SHY91uBmW2oXJUKTyonKy12doA=w1342-h1794-s-no-gm?authuser=0"
 			aspect="aspect-square"
 			svg="/star3.svg"
 			svg2="/heart.svg"
 			rotate="rotate-6"
 		/>
-		<p class="max-w-sm text-center md:text-right">
-			I’m <b>Gabriel Alexis Gonzales</b>, aka <b>Iamusicgabriel</b>. Student at <b
-				>Don Bosco Makati</b
-			>. A <b>Student leader, front-end dev, video editor, artist!</b>
-		</p>
+		<div
+			class="gap-4 max-w-sm text-center md:text-right flex flex-col items-center"
+		>
+			<p class="">
+				I’m <b>Gabriel Alexis Gonzales</b>, aka <b>Iamusicgabriel</b>. Student
+				at <b>Don Bosco Makati</b>. A <b
+					>Student leader, front-end dev, video editor, artist!</b
+				>
+			</p>
+			<Button
+				class="hover:scale-105"
+				color="bg-white w-fit"
+				text="Bionote"
+				href="/bionote"
+			/>
+		</div>
 	</div>
+
 	<div
-		class="flex flex-col md:flex-row-reverse gap-10 w-full max-w-screen-lg justify-around items-center"
+		class="flex flex-col md:flex-row-reverse gap-10 w-full max-w-screen-lg justify-around items-center mt-10"
 	>
 		<Pic
 			src="https://lh3.googleusercontent.com/pw/ABLVV85AlsQ5dvbRuoVt23mMMwiE8xNtgK96rSQ6vZ1ACpepgp_RZPpWgdA4AktNSBMHluXHAhuUYVZCJ6vWqDkuPC2LkplsGlxT4z57b7rxdMB1EfAxoldJ=w2400"
@@ -117,6 +130,7 @@ const played = await recentlyPlayed();
 			<SmallPlaceholder color="bg-bwhite" text="single 😆😆😆" />
 		</div>
 	</div>
+	<div class="divider"></div>
 	<!-- Spotify shizz -->
 	<SmallPlaceholder color="bg-green-400" text="Spotify shizz" />
 	<div
@@ -134,7 +148,7 @@ const played = await recentlyPlayed();
 					href={played.items[0].track.external_urls.spotify}
 				>
 					<div class="flex flex-col w-full justify-center">
-						<span class={`text-sm md:text-lg text-left`}>
+						<span class={`text-sm md:text-lg text-left text-bblack`}>
 							{() => {
 								const name = played.items[0].track.name;
 								if (name.length > 30) {
@@ -143,7 +157,9 @@ const played = await recentlyPlayed();
 								return name;
 							}}
 						</span>
-						<span class={`text-xs md:text-sm text-left items-center`}>
+						<span
+							class={`text-xs md:text-sm text-left items-center text-bblack`}
+						>
 							{played.items[0].track.artists[0].name}
 						</span>
 					</div>
@@ -215,7 +231,9 @@ const played = await recentlyPlayed();
 						href={res.external_urls.spotify}
 					>
 						<div class="flex items-center mx-2 gap-2 justify-center">
-							<span class={`text-xs md:text-sm text-center items-center `}>
+							<span
+								class={`text-xs md:text-sm text-center items-center text-bblack`}
+							>
 								{index + 1}
 							</span>
 							<img
@@ -224,7 +242,7 @@ const played = await recentlyPlayed();
 							/>
 						</div>
 						<div class="flex flex-col w-full justify-center">
-							<span class={`text-sm md:text-lg text-right`}>
+							<span class={`text-sm md:text-lg text-right text-bblack`}>
 								{() => {
 									const name = res.name;
 									if (name.length > 28) {
@@ -233,7 +251,9 @@ const played = await recentlyPlayed();
 									return name;
 								}}
 							</span>
-							<span class={`text-xs md:text-sm text-right items-center`}>
+							<span
+								class={`text-xs md:text-sm text-right items-center text-bblack`}
+							>
 								{res.artists[0].name}
 							</span>
 						</div>
