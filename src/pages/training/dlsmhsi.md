@@ -1,7 +1,7 @@
 ---
-title: "Finalist - Cinemapua International Student Short Film Festival"
-subtitle: "Mapua University"
-date: November 2022
+title: "Balancing Academics, Extra Curricular and Leadership"
+subtitle: "De La Salle Medical and Health Sciences Institute"
+date: January 22 2022
 layout: ../../layouts/AwardsLayout.astro
 ---
 
