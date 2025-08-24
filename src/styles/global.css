@@ -16,3 +16,18 @@
 	--font-pixelify: "Pixelify Sans", sans-serif;
 	--drop-shadow-box: 5px 5px 0 rgba(0, 0, 0, 0.2);
 }
+
+.BigText {
+	background: linear-gradient(
+		90deg,
+		rgb(255, 197, 60),
+		rgb(251, 82, 56),
+		rgb(255, 0, 208)
+	);
+	color: #fdf5ee;
+	-webkit-background-clip: text;
+	-webkit-text-stroke: 8px transparent;
+	line-height: 70%;
+	padding: 8px;
+	width: fit-content;
+}

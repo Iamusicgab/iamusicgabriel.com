@@ -1,0 +1,15 @@
+---
+const { rotate } = Astro.props;
+const rotateProperty = (rotate: any) => {
+	const intRotate = Number(rotate);
+	if (intRotate < 0) {
+		return `rotate-${intRotate}`;
+	} else {
+		return `-rotate-${intRotate}`;
+	}
+};
+---
+
+<span class={`BigText text-2xl drop-shadow-box ${rotateProperty(rotate)}`}
+	><slot /></span
+>
