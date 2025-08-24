@@ -12,5 +12,7 @@
 	--color-red: #ea6c5e;
 	--color-yellow2: #f4bf53;
 	--color-green: #5fc55a;
+	--color-violet: #3445ed;
 	--font-pixelify: "Pixelify Sans", sans-serif;
+	--drop-shadow-box: 5px 5px 0 rgba(0, 0, 0, 0.2);
 }

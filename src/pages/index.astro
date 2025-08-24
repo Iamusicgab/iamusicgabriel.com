@@ -1,6 +1,12 @@
 ---
 import "../styles/global.css";
 import Body from "../layouts/body.astro";
+import WindowText from "../components/WindowText.astro";
+import WindowImage from "../components/WindowImage.astro";
+
+import Coding from "../images/coding.gif";
+import Hero from "../images/my-images/hero.png";
+import Iamusicgabriel from "../images/iamusicgabriel.png";
 ---
 
 <html lang="en">
@@ -9,29 +15,35 @@ import Body from "../layouts/body.astro";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Iamusicgabriel</title>
 	</head>
 	<Body>
-		<div class="w-fit">
-			<!-- Window Title and Buttons -->
-			<div
-				class="flex align-middle justify-between bg-white w-full items-center px-2 py-1"
-			>
-				<div class="flex gap-1 h-fit">
-					<div class="w-2 h-2 bg-red rounded-full"></div>
-					<div class="w-2 h-2 bg-yellow2 rounded-full"></div>
-					<div class="w-2 h-2 bg-green rounded-full"></div>
-				</div>
-				<div>
-					<span class="text-xs h-fit">test</span>
-				</div>
-			</div>
+		<!-- Landing Page -->
+		<img class="w-full max-w-lg" src={Hero.src} />
 
-			<!-- Actual Window -->
-			<div
-				class="w-48 h-48 bg-green border-b-4 border-r-4 border-l-4 border-white"
-			>
+		<WindowText title="iamusicgabriel.tsx" color="pink">
+			<div class="w-108 flex flex-col">
+				<span class="opacity-50 select-none">const intro = () => &lbrace;</span>
+				<span class="indent-4 opacity-50 select-none">return (</span>
+				<span class="text-3xl"
+					>Narcissistic and arrogant a**hole. Welcome to my world, my friend.</span
+				>
+
+				<span class="indent-4 opacity-50 select-none">);</span>
+				<span class="opacity-50 select-none">&rbrace;</span>
 			</div>
+		</WindowText>
+		<WindowText title="rainbow.tsx" css="bg-gradient-to-r from-violet to-pink">
+			<div class="w-32">
+				parati't parating may bahaghari sa bawat antas ng buhay.
+			</div>
+		</WindowText>
+		<WindowText title="rainbow.tsx" color="yellow" text="think different." />
+		<WindowImage title="monke.gif">
+			<img src={Coding.src} class="w-64" />
+		</WindowImage>
+		<div>
+			
 		</div>
 	</Body>
 </html>

@@ -1,0 +1,36 @@
+---
+const { title, text, color, css } = Astro.props;
+const colorPicker = (color: any) => {
+	if (color == "yellow" || color == "yellow1") {
+		return "base-100";
+	} else if (color == "violet" || color == "pink" || color == undefined) {
+		return "white";
+	}
+};
+---
+
+<div class="w-fit drop-shadow-box">
+	<!-- Window Title and Buttons -->
+	<div
+		class="flex align-middle justify-between bg-white w-full items-center px-2 gap-1"
+	>
+		<div class="flex gap-1 h-fit">
+			<div class="w-2 h-2 bg-red rounded-full"></div>
+			<div class="w-2 h-2 bg-yellow2 rounded-full"></div>
+			<div class="w-2 h-2 bg-green rounded-full"></div>
+		</div>
+		<div>
+			<span class="text-xs h-fit select-none">{title}</span>
+		</div>
+	</div>
+
+	<!-- Actual Window -->
+	<div class="w-full h-fit border-b-4 border-r-4 border-l-4 border-white">
+		<div
+			class={`${css} bg-${color} text-${colorPicker(color)} p-3 text-base leading-5`}
+		>
+			<span>{text}</span>
+			<slot />
+		</div>
+	</div>
+</div>

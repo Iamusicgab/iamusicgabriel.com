@@ -1,7 +1,9 @@
 <body class="bg-blue font-pixelify">
 	<div
-		class="absolute inset-0 bg-[url(../images/pattern.png)] bg-center bg-repeat opacity-5"
+		class="absolute inset-0 -z-10 bg-[url(../images/pattern.png)] bg-repeat opacity-5"
 	>
 	</div>
-	<slot />
+	<div class="flex flex-col">
+		<slot />
+	</div>
 </body>
