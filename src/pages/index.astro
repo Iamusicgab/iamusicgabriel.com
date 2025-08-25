@@ -21,11 +21,15 @@ import Iamusicgabriel from "../images/iamusicgabriel.png";
 	</head>
 	<Body>
 		<!-- Landing Page -->
-		<div class="flex justify-center p-12">
+		<section class="flex justify-center items-center mt-40 mb-20">
 			<div class="relative w-fit h-164">
 				<div class="absolute left-106 top-35 z-10">
-					<WindowText title="iamusicgabriel.tsx" color="pink">
-						<div class="w-72 flex flex-col">
+					<WindowText
+						title="iamusicgabriel.tsx"
+						color="bg-pink"
+						textColor="text-white"
+					>
+						<div class="w-72 flex flex-col text-white">
 							<span class="opacity-50 select-none"
 								>const intro = () => &lbrace;</span
 							>
@@ -45,15 +49,16 @@ import Iamusicgabriel from "../images/iamusicgabriel.png";
 						title="rainbow.tsx"
 						css="bg-gradient-to-r from-violet to-pink"
 					>
-						<div class="w-32">
+						<div class="w-32 text-white">
 							parati't parating may bahaghari sa bawat antas ng buhay.
 						</div>
 					</WindowText>
 				</div>
-				<div class="absolute right-0">
+				<div class="absolute -right-30 top-10">
 					<WindowText
 						title="quote.tsx"
-						color="yellow"
+						color="bg-yellow"
+						textColor="text-base-100"
 						text="think different."
 					/>
 				</div>
@@ -62,11 +67,14 @@ import Iamusicgabriel from "../images/iamusicgabriel.png";
 						<img src={Coding.src} class="w-64" />
 					</WindowImage>
 				</div>
-				<img class="w-full max-w-lg relative z-10 select-none" src={Hero.src} />
+				<img
+					class="w-full max-w-lg relative z-10 select-none drop-shadow-box"
+					src={Hero.src}
+				/>
 
 				<img
 					src={Iamusicgabriel.src}
-					class="max-w-3xl relative bottom-44 -rotate-6 z-10 select-none"
+					class="max-w-3xl relative bottom-44 -rotate-6 z-10 select-none drop-shadow-box"
 				/>
 				<div class="absolute top-60 left-10 z-30 -rotate-6">
 					<BigText><span>pusong</span><span>salesiano</span></BigText>
@@ -75,6 +83,9 @@ import Iamusicgabriel from "../images/iamusicgabriel.png";
 					<BigText>isko!</BigText>
 				</div>
 			</div>
+		</section>
+		<div>
+			<marquee class="text-4xl bg-yellow py-2">IAMUSICGABRIEL</marquee>
 		</div>
 	</Body>
 </html>
