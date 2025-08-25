@@ -5,6 +5,7 @@ import Body from "../layouts/body.astro";
 import WindowText from "../components/WindowText.astro";
 import WindowImage from "../components/WindowImage.astro";
 import BigText from "../components/BigText.astro";
+import Marquee from "../components/Marquee";
 
 import Coding from "../images/coding.gif";
 import Hero from "../images/my-images/hero.png";
@@ -21,7 +22,7 @@ import Iamusicgabriel from "../images/iamusicgabriel.png";
 	</head>
 	<Body>
 		<!-- Landing Page -->
-		<section class="flex justify-center items-center mt-40 mb-20">
+		<section class="flex justify-center items-center h-[1024px]">
 			<div class="relative w-fit h-164">
 				<div class="absolute left-106 top-35 z-10">
 					<WindowText
@@ -84,8 +85,6 @@ import Iamusicgabriel from "../images/iamusicgabriel.png";
 				</div>
 			</div>
 		</section>
-		<div>
-			<marquee class="text-4xl bg-yellow py-2">IAMUSICGABRIEL</marquee>
-		</div>
+		<Marquee text="IAMUSICGABRIEL" client:load />
 	</Body>
 </html>
