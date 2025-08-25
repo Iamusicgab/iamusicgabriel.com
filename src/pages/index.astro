@@ -21,29 +21,60 @@ import Iamusicgabriel from "../images/iamusicgabriel.png";
 	</head>
 	<Body>
 		<!-- Landing Page -->
-		<img class="w-full max-w-lg" src={Hero.src} />
+		<div class="flex justify-center p-12">
+			<div class="relative w-fit h-164">
+				<div class="absolute left-106 top-35 z-10">
+					<WindowText title="iamusicgabriel.tsx" color="pink">
+						<div class="w-72 flex flex-col">
+							<span class="opacity-50 select-none"
+								>const intro = () => &lbrace;</span
+							>
+							<span class="indent-4 opacity-50 select-none">return (</span>
+							<span class="text-3xl"
+								>Narcissistic and arrogant a**hole. Welcome to my world, my
+								friend.</span
+							>
 
-		<WindowText title="iamusicgabriel.tsx" color="pink">
-			<div class="w-108 flex flex-col">
-				<span class="opacity-50 select-none">const intro = () => &lbrace;</span>
-				<span class="indent-4 opacity-50 select-none">return (</span>
-				<span class="text-3xl"
-					>Narcissistic and arrogant a**hole. Welcome to my world, my friend.</span
-				>
+							<span class="indent-4 opacity-50 select-none">);</span>
+							<span class="opacity-50 select-none">&rbrace;</span>
+						</div>
+					</WindowText>
+				</div>
+				<div class="absolute top-4 right-65">
+					<WindowText
+						title="rainbow.tsx"
+						css="bg-gradient-to-r from-violet to-pink"
+					>
+						<div class="w-32">
+							parati't parating may bahaghari sa bawat antas ng buhay.
+						</div>
+					</WindowText>
+				</div>
+				<div class="absolute right-0">
+					<WindowText
+						title="quote.tsx"
+						color="yellow"
+						text="think different."
+					/>
+				</div>
+				<div class="absolute top-80 -left-45">
+					<WindowImage title="monke.gif">
+						<img src={Coding.src} class="w-64" />
+					</WindowImage>
+				</div>
+				<img class="w-full max-w-lg relative z-10 select-none" src={Hero.src} />
 
-				<span class="indent-4 opacity-50 select-none">);</span>
-				<span class="opacity-50 select-none">&rbrace;</span>
+				<img
+					src={Iamusicgabriel.src}
+					class="max-w-3xl relative bottom-44 -rotate-6 z-10 select-none"
+				/>
+				<div class="absolute top-60 left-10 z-30 -rotate-6">
+					<BigText><span>pusong</span><span>salesiano</span></BigText>
+				</div>
+				<div class="absolute top-60 left-80 z-30 rotate-4">
+					<BigText>isko!</BigText>
+				</div>
 			</div>
-		</WindowText>
-		<WindowText title="rainbow.tsx" css="bg-gradient-to-r from-violet to-pink">
-			<div class="w-32">
-				parati't parating may bahaghari sa bawat antas ng buhay.
-			</div>
-		</WindowText>
-		<WindowText title="rainbow.tsx" color="yellow" text="think different." />
-		<WindowImage title="monke.gif">
-			<img src={Coding.src} class="w-64" />
-		</WindowImage>
-		<BigText rotate="6"> awef </BigText>
+		</div>
 	</Body>
 </html>
