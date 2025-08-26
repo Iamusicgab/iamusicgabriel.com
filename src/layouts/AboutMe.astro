@@ -1,0 +1,85 @@
+---
+import WindowText from "../components/WindowText.astro";
+import Button from "../components/Button.astro";
+import MyId from "../components/MyId";
+
+import BMO from "../images/bmo.gif";
+import Laptop from "../images/laptop.gif";
+import HTML from "../images/technologies/html.svg";
+import CSS from "../images/technologies/css.svg";
+import JS from "../images/technologies/js.svg";
+import React from "../images/technologies/react.svg";
+import Nextjs from "../images/technologies/nextjs.svg";
+import Astro from "../images/technologies/astro.svg";
+import Tailwind from "../images/technologies/tailwind.svg";
+import Figma from "../images/technologies/figma.svg";
+import Photoshop from "../images/technologies/photoshop.svg";
+import Illustrator from "../images/technologies/illustrator.svg";
+import Premiere from "../images/technologies/premiere.svg";
+import AfterEffects from "../images/technologies/aftereffects.svg";
+import Ableton from "../images/technologies/ableton.svg";
+---
+
+<section class="flex w-full flex-col gap-4 md:flex-row">
+	<div class="h-150 md:h-175 w-full md:max-w-1/2">
+		<MyId client:load />
+	</div>
+
+	<div class="w-full flex flex-col justify-center items-center gap-2">
+		<WindowText title="aboutMe.tsx" color="bg-pink">
+			<div class="flex flex-col gap-4">
+				<div class="text-white max-w-82">
+					I’m Gabriel Gonzales, also known as Iamusicgabriel on streaming
+					platforms. A Computer Engineering student at the University of the
+					Philippines - Diliman. UI/UX Designer, frontend developer, filmmaker,
+					and artist!
+				</div>
+				<Button title="Full Bionote" link="/" />
+			</div>
+			<img class="fixed -right-6 -bottom-6 w-20 rotate-6" src={BMO.src} />
+		</WindowText>
+		<!-- <WindowText title="technologies.tsx" color="bg-pink">
+			<div class="flex flex-col gap-4 text-white overflow-x-hidden">
+				<div class="grid gap-2.5">
+					<span>Frontend Dev</span>
+					<div class="grid grid-flow-col gap-4">
+						<img src={HTML.src} class="h-6" />
+						<img src={CSS.src} class="h-6" />
+						<img src={JS.src} class="h-6" />
+						<img src={React.src} class="h-6" />
+						<img src={Nextjs.src} class="h-6" />
+						<img src={Astro.src} class="h-6" />
+						<img src={Tailwind.src} class="h-6" />
+					</div>
+				</div>
+				<div class="grid gap-2.5">
+					<span>Graphics, UI/UX</span>
+					<div class="grid grid-flow-col gap-4 w-fit">
+						<img src={Figma.src} class="h-6" />
+						<img src={Photoshop.src} class="h-6" />
+						<img src={Illustrator.src} class="h-6" />
+					</div>
+				</div>
+
+				<div class="grid gap-2.5">
+					<span>Video, Motion</span>
+					<div class="grid grid-flow-col gap-4 w-fit">
+						<img src={Premiere.src} class="h-6" />
+						<img src={AfterEffects.src} class="h-6" />
+					</div>
+				</div>
+
+				<div class="grid gap-2.5">
+					<span>Video, Motion</span>
+					<div class="grid grid-flow-col gap-4 w-fit">
+						<img src={Ableton.src} class="h-6" />
+					</div>
+				</div>
+			</div>
+			<img
+				class="absolute -left-10 -bottom-8 w-20 -rotate-6"
+				src={Laptop.src}
+			/>
+		</WindowText> -->
+	</div>
+</section>

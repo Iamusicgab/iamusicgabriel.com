@@ -2,15 +2,13 @@ import { motion, useScroll, useTransform, useSpring } from "motion/react";
 
 import { useRef } from "react";
 
-import React from "react";
-
 function Marquee({ text }) {
 	const targetRef = useRef(null);
 	const { scrollYProgress } = useScroll({
 		target: targetRef,
-		offset: ["start end", "end end"],
+		offset: ["start end", "end start"],
 	});
-	const xTransform = useTransform(scrollYProgress, [0, 1], ["-50%", "-47%"]);
+	const xTransform = useTransform(scrollYProgress, [0, 1], ["-50%", "-20%"]);
 	const xSpring = useSpring(xTransform, {
 		stiffness: 200,
 		damping: 30,
@@ -18,11 +16,54 @@ function Marquee({ text }) {
 	});
 
 	return (
-		<div ref={targetRef} className="bg-yellow relative py-2 overflow-hidden">
+		<div
+			ref={targetRef}
+			className="bg-yellow relative py-1 md:py-2 overflow-hidden"
+		>
 			<motion.div
-				className="text-4xl relative flex gap-10 "
+				className=" text-2xl md:text-4xl relative flex gap-10 "
 				style={{ left: xSpring }}
 			>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
+				<span>{text}</span>
 				<span>{text}</span>
 				<span>{text}</span>
 				<span>{text}</span>

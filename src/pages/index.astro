@@ -2,17 +2,14 @@
 import "../styles/global.css";
 
 import Body from "../layouts/body.astro";
-import WindowText from "../components/WindowText.astro";
-import WindowImage from "../components/WindowImage.astro";
-import BigText from "../components/BigText.astro";
-import Marquee from "../components/Marquee";
+import Landing from "../layouts/Landing.astro";
+import AboutMe from "../layouts/AboutMe.astro";
+import MyId from "../components/MyId";
 
-import Coding from "../images/coding.gif";
-import Hero from "../images/my-images/hero.png";
-import Iamusicgabriel from "../images/iamusicgabriel.png";
+import Marquee from "../components/Marquee";
 ---
 
-<html lang="en">
+<html lang="en" class="bg-blue">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -22,69 +19,12 @@ import Iamusicgabriel from "../images/iamusicgabriel.png";
 	</head>
 	<Body>
 		<!-- Landing Page -->
-		<section class="flex justify-center items-center h-[1024px]">
-			<div class="relative w-fit h-164">
-				<div class="absolute left-106 top-35 z-10">
-					<WindowText
-						title="iamusicgabriel.tsx"
-						color="bg-pink"
-						textColor="text-white"
-					>
-						<div class="w-72 flex flex-col text-white">
-							<span class="opacity-50 select-none"
-								>const intro = () => &lbrace;</span
-							>
-							<span class="indent-4 opacity-50 select-none">return (</span>
-							<span class="text-3xl"
-								>Narcissistic and arrogant a**hole. Welcome to my world, my
-								friend.</span
-							>
-
-							<span class="indent-4 opacity-50 select-none">);</span>
-							<span class="opacity-50 select-none">&rbrace;</span>
-						</div>
-					</WindowText>
-				</div>
-				<div class="absolute top-4 right-65">
-					<WindowText
-						title="rainbow.tsx"
-						css="bg-gradient-to-r from-violet to-pink"
-					>
-						<div class="w-32 text-white">
-							parati't parating may bahaghari sa bawat antas ng buhay.
-						</div>
-					</WindowText>
-				</div>
-				<div class="absolute -right-30 top-10">
-					<WindowText
-						title="quote.tsx"
-						color="bg-yellow"
-						textColor="text-base-100"
-						text="think different."
-					/>
-				</div>
-				<div class="absolute top-80 -left-45">
-					<WindowImage title="monke.gif">
-						<img src={Coding.src} class="w-64" />
-					</WindowImage>
-				</div>
-				<img
-					class="w-full max-w-lg relative z-10 select-none drop-shadow-box"
-					src={Hero.src}
-				/>
-
-				<img
-					src={Iamusicgabriel.src}
-					class="max-w-3xl relative bottom-44 -rotate-6 z-10 select-none drop-shadow-box"
-				/>
-				<div class="absolute top-60 left-10 z-30 -rotate-6">
-					<BigText><span>pusong</span><span>salesiano</span></BigText>
-				</div>
-				<div class="absolute top-60 left-80 z-30 rotate-4">
-					<BigText>isko!</BigText>
-				</div>
-			</div>
-		</section>
+		<!-- <Landing /> -->
 		<Marquee text="IAMUSICGABRIEL" client:load />
+		<div class="flex w-full justify-center self-center max-w-[1440px]">
+			<AboutMe />
+		</div>
+
+		<div class="w-full h-256"></div>
 	</Body>
 </html>
