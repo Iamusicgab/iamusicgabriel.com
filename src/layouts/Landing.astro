@@ -1,6 +1,5 @@
 ---
-import WindowText from "../components/WindowText.astro";
-import WindowImage from "../components/WindowImage.astro";
+import Window from "../components/Window.astro";
 import BigText from "../components/BigText.astro";
 
 import Coding from "../images/coding.gif";
@@ -8,67 +7,56 @@ import Hero from "../images/my-images/hero.png";
 import Iamusicgabriel from "../images/iamusicgabriel.png";
 ---
 
-<section class="flex justify-center mt-36 mb-20">
-	<div class="relative w-full md:w-fit md:h-164">
-		<div class="md:absolute left-106 top-35 z-10">
-			<WindowText
-				title="iamusicgabriel.tsx"
-				color="bg-pink"
-				textColor="text-white"
-			>
-				<div class="w-72 flex flex-col text-white">
-					<span class="opacity-50 select-none"
+<section class="flex flex-col items-center">
+	<div
+		class="flex flex-col items-center md:items-baseline max-w-lg md:max-w-full relative pt-36"
+		id="HeroTitleContainer"
+	>
+		<div
+			class="absolute w-fit left-1/2 transform -translate-x-35 -translate-y-25 bg-amber-400"
+		>
+			<Window title="intro.tsx" color="pink" padding="p-3">
+				<div class="flex flex-col w-48">
+					<span class="opacity-50 text-xs md:text-base"
 						>const intro = () => &lbrace;</span
 					>
-					<span class="indent-4 opacity-50 select-none">return (</span>
-					<span class="text-3xl"
-						>Narcissistic and arrogant a**hole. Welcome to my world, my friend.</span
-					>
-
-					<span class="indent-4 opacity-50 select-none">);</span>
-					<span class="opacity-50 select-none">&rbrace;</span>
+					<span class="indent-4 opacity-50 text-xs md:text-base">return (</span>
+					<span class="text-lg md:text-3xl leading-5">
+						the narcissistic and arrogant a**hole. welcome to my world, my
+						friend.
+					</span>
+					<span class="indent-4 opacity-50 text-xs md:text-base">);</span>
+					<span class="opacity-50 text-xs md:text-base">&rbrace;;</span>
 				</div>
-			</WindowText>
+			</Window>
 		</div>
-		<div class="md:absolute top-4 right-70">
-			<WindowText
+		<div class="absolute bottom-15 left-0 z-10 scale-70 md:scale-100">
+			<Window
 				title="rainbow.tsx"
 				css="bg-gradient-to-r from-violet to-pink"
+				padding="p-3"
 			>
-				<div class="w-32 text-white">
-					parati't parating may bahaghari sa bawat antas ng buhay.
+				<div class="w-30">
+					<span class="text-white"
+						>"parati't parating may bahaghari sa bawat antas ng buhay."</span
+					>
 				</div>
-			</WindowText>
+			</Window>
 		</div>
-		<div class="md:absolute -right-30 top-10">
-			<WindowText
-				title="quote.tsx"
-				color="bg-yellow"
-				textColor="text-base-100"
-				text="think different."
-			/>
+		<div class="absolute bottom-20 top-40 -z-10 right-5">
+			<Window title="monke.gif">
+				<img class="w-30" src={Coding.src} />
+			</Window>
 		</div>
-		<div class="md:absolute top-80 -left-45">
-			<WindowImage title="monke.gif">
-				<img src={Coding.src} class="w-64" />
-			</WindowImage>
+		<div class="absolute bottom-30 right-4 z-10">
+			<Window title="quote.tsx" color="yellow" padding="p-3">
+				<span class="text-xs md:text-base">think different.</span>
+			</Window>
 		</div>
-
+		<img class="w-11/12 md:w-128 drop-shadow-box" src={Hero.src} />
 		<img
-			class="w-64 md:w-full md:max-w-lg md:relative z-10 select-none drop-shadow-box"
-			src={Hero.src}
-		/>
-
-		<img
+			class="-rotate-6 absolute z-10 bottom-0 md:bottom-36 md:w-3xl drop-shadow-lg p-3"
 			src={Iamusicgabriel.src}
-			class="md:max-w-3xl relative bottom-20 md:bottom-44 -rotate-6 z-10 select-none drop-shadow-box"
 		/>
-
-		<div class="absolute top-40 md:top-60 md:left-10 z-30 -rotate-6">
-			<BigText><span>pusong</span><span>salesiano</span></BigText>
-		</div>
-		<div class="absolute top-40 left-40 md:top-60 md:left-80 z-30 rotate-4">
-			<BigText>isko!</BigText>
-		</div>
 	</div>
 </section>
