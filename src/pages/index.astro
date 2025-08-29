@@ -4,7 +4,6 @@ import "../styles/global.css";
 import Body from "../layouts/body.astro";
 import Landing from "../layouts/Landing.astro";
 import AboutMe from "../layouts/AboutMe.astro";
-import MyId from "../components/MyId";
 
 import Marquee from "../components/Marquee";
 ---
@@ -21,10 +20,10 @@ import Marquee from "../components/Marquee";
 		<!-- Landing Page -->
 		<Landing />
 		<Marquee text="IAMUSICGABRIEL" client:load />
-		<!-- <div class="flex w-full justify-center self-center max-w-[1440px]">
+		<div class="flex w-full justify-center self-center max-w-[1440px]">
 			<AboutMe />
 		</div>
 
-		<div class="w-full h-256"></div> -->
+		<div class="w-full h-256"></div>
 	</Body>
 </html>
