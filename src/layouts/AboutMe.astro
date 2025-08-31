@@ -22,10 +22,73 @@ import Ableton from "../images/technologies/ableton.svg";
 import Pikachu from "../images/pikachu.gif";
 import Hero2 from "../images/my-images/hero2.png";
 import Book from "../images/book.gif";
+import NoHeart from "../images/gui/heart/0.png";
+import HalfHeart from "../images/gui/heart/1.png";
+import FullHeart from "../images/gui/heart/2.png";
+import Coin from "../images/gui/coin.gif";
+
+import Medal from "../images/gui/badges/medal.svg";
+import Fire from "../images/gui/badges/fire.svg";
+import Cat from "../images/gui/badges/cat.svg";
+import Bi from "../images/gui/badges/bi.svg";
+
+import Bolt from "../images/gui/bolt.svg";
+import Cloud from "../images/gui/cloud.svg";
+import Chat from "../images/gui/chat.svg";
+
+import GreenHealth4 from "../images/gui/GreenHealth/4.png";
+
+import YellowHealth2 from "../images/gui/YellowHealth/2.png";
+
+import WhiteHealth1 from "../images/gui/WhiteHealth/1.png";
+
+import OrangeBar1 from "../images/gui/OrangeBar/1.png";
+import OrangeBar2 from "../images/gui/OrangeBar/2.png";
+import OrangeBar3 from "../images/gui/OrangeBar/3.png";
+
+import OrangeStar from "../images/gui/orangeStar.gif";
+
+import Education from "../images/gui/education.svg";
+import YellowStar from "../images/gui/yellowStar.svg";
+import Infp from "../images/gui/infp.png";
+import Pb from "../images/gui/pb.png";
+
+import Music from "../images/gui/music.svg";
+import Computer from "../images/gui/computer.svg";
+import Palette from "../images/gui/palette.svg";
+import Brush from "../images/gui/brush.svg";
+
+const birthday = () => {
+	let currentYear = new Date().getFullYear();
+	let myBirthday = new Date("May 12");
+	let currentDate = new Date();
+	myBirthday.setFullYear(currentYear);
+	let finalDate = myBirthday.getTime() - currentDate.getTime();
+
+	if (finalDate <= 0) {
+		currentYear++;
+		myBirthday.setFullYear(currentYear);
+		let timeDifference = myBirthday.getTime() - currentDate.getTime();
+		let daysDifference = timeDifference / (1000 * 3600 * 24);
+		return Math.abs(Math.ceil(daysDifference) - 365);
+	} else {
+		myBirthday.setFullYear(currentYear);
+		let timeDifference = myBirthday.getTime() - currentDate.getTime();
+		let daysDifference = timeDifference / (1000 * 3600 * 24);
+		return Math.abs(Math.ceil(daysDifference) - 365);
+	}
+};
+const birthdayYear = () => {
+	let currentDate = new Date();
+	let myBirthday = new Date("May 12, 2006");
+	let rev = currentDate.getTime() - myBirthday.getTime();
+	let final = Math.floor(rev / (1000 * 3600 * 24) / 365);
+	return final;
+};
 ---
 
-<section class="flex w-full flex-col gap-4 md:flex-row">
-	<div class="h-150 md:h-175 w-full md:max-w-1/2">
+<section class="flex flex-col md:grid md:grid-cols-2 w-full gap-4">
+	<div class="h-120 md:h-175 w-full">
 		<MyId client:load />
 	</div>
 
@@ -41,7 +104,7 @@ import Book from "../images/book.gif";
 				<Button title="Full Bionote" link="/" />
 			</div>
 			<img
-				class="absolute right-0 lg:-right-10 -bottom-6 w-20 rotate-6"
+				class="absolute right-0 lg:-right-10 -bottom-6 w-20 rotate-6 pixelated"
 				src={BMO.src}
 			/>
 		</Window>
@@ -88,12 +151,18 @@ import Book from "../images/book.gif";
 				src={Laptop.src}
 			/>
 		</Window>
+	</div>
+	<div class="w-full flex justify-center items-center p-3 md:col-span-2">
 		<Window title="pokemonStats.dmg" color="bg-pink" padding="p-3">
-			<div class="w-fit">
-				<div class="grid grid-flow-col gap-4 items-center" id="topPart">
+			<div class="grid gap-3">
+				<!-- Part 1 -->
+				<div
+					class="flex flex-col md:flex-row gap-3 items-center justify-center"
+					id="topPart"
+				>
 					<!-- Image -->
 					<div
-						class="bg-[url(../images/pokemon.png)] aspect-square w-24 bg-cover bg-center border-4 relative"
+						class="bg-[url(../images/pokemon.png)] aspect-square w-40 min-w-24 md:w-24 bg-cover bg-center border-4 relative self-center"
 					>
 						<img src={Hero2.src} class="" />
 						<img
@@ -102,27 +171,162 @@ import Book from "../images/book.gif";
 						/>
 					</div>
 					<!-- Top Stats -->
-					<div class="grid">
+					<div class="grid gap-2 w-full">
 						<!-- Name and Level -->
-						<div class="grid grid-flow-col items-center gap-3">
-							<span class="text-3xl">@iamusicgabriel</span>
-							<span class="bg-yellow text-base-100 border-3 w-fit h-fit px-1">
-								Lv. 19
+						<div
+							class="flex flex-wrap gap-x-2 flex-row-reverse items-center justify-end w-fit"
+						>
+							<span
+								class="bg-yellow text-base-100 border-2 w-fit h-fit px-1 text-xs"
+							>
+								Lv. {birthdayYear()}
 							</span>
+							<span class="text-3xl">@iamusicgabriel</span>
 						</div>
 						<!-- Progress Bar -->
-						<div class="bg-base-100 p-1 h-4">
+						<div
+							class="bg-base-100 h-4 border-base-100 border-2 w-full relative flex"
+						>
+							<span
+								class="absolute inset-0 flex items-center justify-center text-xs"
+								>{birthday()} / 365</span
+							>
 							<div
-								class="bg-yellow w-[100%] h-full flex justify-center items-center text-base-100"
+								class={`bg-green h-full flex justify-center items-center `}
+								style={`width: ${Math.floor((birthday() / 365) * 100) + "%"}`}
 							>
 							</div>
 						</div>
 
-						<div></div>
+						<div class="flex justify-between w-fill">
+							<!-- Heart and Money -->
+							<div class="w-fit grid">
+								<div class="grid grid-flow-col w-fit gap-[2px]">
+									<img src={FullHeart.src} class="pixelated w-4" />
+									<img src={FullHeart.src} class="pixelated w-4" />
+									<img src={FullHeart.src} class="pixelated w-4" />
+									<img src={FullHeart.src} class="pixelated w-4" />
+									<img src={HalfHeart.src} class="pixelated w-4" />
+									<img src={NoHeart.src} class="pixelated w-4" />
+									<img src={NoHeart.src} class="pixelated w-4" />
+								</div>
+								<div class="flex items-center gap-[2px]">
+									<img src={Coin.src} class="pixelated w-4" />
+									72.19
+								</div>
+							</div>
+							<!-- Badges -->
+							<div class="flex flex-col items-end w-fit">
+								<span class="text-xs w-fit">Badges</span>
+								<div class="flex gap-2 w-fit">
+									<img src={Medal.src} class="h-6" />
+									<img src={Fire.src} class="h-6" />
+									<img src={Cat.src} class="h-6" />
+									<img src={Bi.src} class="h-6" />
+								</div>
+							</div>
+						</div>
 					</div>
-					<div></div>
-					<div></div>
-					<img src={Pikachu.src} class="absolute h-20 right-0 -top-15 -z-10" />
+				</div>
+				<!-- Part 2 -->
+				<div
+					class="flex flex-row-reverse justify-between flex-wrap gap-6 w-full"
+				>
+					<!-- About Mes -->
+					<div class="flex-grow">
+						<!-- UP Diliman -->
+						<div class="flex gap-2 items-center">
+							<img class="w-5" src={Education.src} />
+							<span class="text-lg">UP Diliman</span>
+						</div>
+						<!-- Birthday -->
+						<div class="flex gap-2 items-center">
+							<img class="w-5" src={YellowStar.src} />
+							<span class="text-lg">May 12, 2006</span>
+						</div>
+						<!-- INFP -->
+						<div class="flex gap-2 items-center">
+							<img class="w-5" src={Infp.src} />
+							<span class="text-lg">INFP</span>
+						</div>
+						<!-- Princess Bubblegum -->
+						<div class="flex gap-2 items-center pixelated">
+							<img class="w-5" src={Pb.src} />
+							<span class="text-lg">Bubbline Lover </span>
+						</div>
+					</div>
+					<!-- Stats -->
+					<div class="flex flex-col items-center flex-grow">
+						<span class="flex py-0.5 px-1 text-pink bg-white w-full">Stats</span
+						>
+						<div class="flex items-end justify-around pt-3 gap-3 w-full">
+							<!-- Energy -->
+							<div class="flex flex-col items-center gap-1">
+								<img src={Bolt.src} />
+								<img class="pixelated w-14" src={YellowHealth2.src} />
+								<span>Energy</span>
+							</div>
+							<!-- Mental -->
+							<div class="flex flex-col items-center gap-1">
+								<img src={Cloud.src} />
+								<img class="pixelated w-14" src={WhiteHealth1.src} />
+								<span>Mental</span>
+							</div>
+							<!-- Social -->
+							<div class="flex flex-col items-center gap-1">
+								<img src={Chat.src} />
+								<img class="pixelated w-14" src={GreenHealth4.src} />
+								<span>Social</span>
+							</div>
+						</div>
+					</div>
+
+					<img
+						src={Pikachu.src}
+						class="absolute h-20 right-0 -top-15 -z-10 pixelated"
+					/>
+				</div>
+				<!-- Part 3 - Skills -->
+				<div class="grid gap-3">
+					<span
+						class="flex py-0.5 px-1 text-pink bg-white w-full items-center gap-1"
+						><img class="h-4" src={OrangeStar.src} />Skills</span
+					>
+					<!-- Skills -->
+					<div class="grid grid-cols-2 gap-2 items-center">
+						<!-- Graphics -->
+						<div class="flex items-center justify-center">
+							<img class="w-8" src={Brush.src} />
+							<div class="flex flex-col items-end">
+								<span class="text-xs text-right">Graphics, UI/UX</span>
+								<img class="h-5 pixelated" src={OrangeBar3.src} />
+							</div>
+						</div>
+						<!-- Frontend Dev -->
+						<div class="flex items-center justify-center">
+							<img class="w-8" src={Computer.src} />
+							<div class="flex flex-col items-end">
+								<span class="text-xs text-right">Frontend Dev</span>
+								<img class="h-5 pixelated" src={OrangeBar2.src} />
+							</div>
+						</div>
+						<!-- Video and Motion -->
+						<div class="flex items-center justify-center">
+							<img class="w-8" src={Palette.src} />
+							<div class="flex flex-col items-end">
+								<span class="text-xs text-right">Video and Motion</span>
+								<img class="h-5 pixelated" src={OrangeBar2.src} />
+							</div>
+						</div>
+						<!-- Music Production -->
+						<div class="flex items-center justify-center">
+							<img class="w-8" src={Music.src} />
+							<div class="flex flex-col items-end">
+								<span class="text-xs text-right">Music Production</span>
+								<img class="h-5 pixelated" src={OrangeBar1.src} />
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</Window>
