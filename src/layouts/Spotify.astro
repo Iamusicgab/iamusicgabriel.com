@@ -2,24 +2,29 @@
 import SpotifyPic from "../images/gui/spotify.png";
 ---
 
-<section class="bg-amber-50 p-3 grid w-full justify-center">
-	<!-- Title -->
-	<div
-		class="flex gap-2 items-center bg-base-100 border-white border-4 p-2 px-3"
-	>
-		<img class="w-14" src={SpotifyPic.src} />
-		<div class="w-fit">
-			<span class="flex flex-col text-white text-xl md:text-2xl w-fit"
-				>My Spotify Stats</span
-			>
-			<span class="text-white text-xs">Updated</span>
-		</div>
-	</div>
+<section class="bg-amber-50 p-3 flex flex-col w-full items-center">
+    <!-- Title -->
+    <div
+        class="flex gap-4 justify-center items-center bg-base-100 border-white border-4 p-2 px-3 w-full max-w-sm md:w-fit"
+    >
+        <img class="w-14" src={SpotifyPic.src} />
+        <div class="w-fit">
+            <span class="flex flex-col text-white text-xl md:text-2xl w-fit"
+                >My Spotify Stats</span
+            >
+            <span class="text-white text-xs">Updated</span>
+        </div>
+    </div>
 
-	<!-- Recently Played -->
-	<div>awef</div>
-	<!-- Top Artist -->
-	<div></div>
-	<!-- Top Songs -->
-	<div></div>
+    <!-- Recently Played -->
+    <div>
+        <span
+            class="bg-green border-2 border-white p-2 px-3 text-white text-xl md:text-2xl"
+            >Recently Played</span
+        >
+    </div>
+    <!-- Top Artist -->
+    <div></div>
+    <!-- Top Songs -->
+    <div></div>
 </section>
