@@ -8,10 +8,79 @@ import Sample from "../images/1989sample.png";
 import BigText from "../components/BigText.astro";
 
 import Note from "../images/gui/note.gif";
+import "dotenv/config";
+import QueryString from "query-string";
+const refresh_token = process.env.REFRESH_TOKEN;
+const basic = process.env.BASIC;
+const getAccessToken = async () => {
+	const url = "https://accounts.spotify.com/api/token";
+	const payload = {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/x-www-form-urlencoded",
+			Authorization: `Basic ${basic}`,
+		},
+		body: QueryString.stringify({
+			grant_type: "refresh_token",
+			refresh_token,
+		}),
+	};
+
+	const res = await fetch(url, payload);
+	const data = await res.json();
+	return data;
+};
+
+const getTopArtists = async () => {
+	const { access_token } = await getAccessToken();
+	const url =
+		"https://api.spotify.com/v1/me/top/artists?time_range=short_term&limit=1";
+	const payload = {
+		method: "GET",
+		headers: {
+			Authorization: `Bearer ${access_token}`,
+		},
+	};
+	const res = await fetch(url, payload);
+	const data = await res.json();
+	return data;
+};
+const getTopTracks = async () => {
+	const { access_token } = await getAccessToken();
+	const url =
+		"https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=3";
+	const payload = {
+		method: "GET",
+		headers: {
+			Authorization: `Bearer ${access_token}`,
+		},
+	};
+	const res = await fetch(url, payload);
+	const data = await res.json();
+	return data;
+};
+
+const recentlyPlayed = async () => {
+	const { access_token } = await getAccessToken();
+	const url = "https://api.spotify.com/v1/me/player/recently-played";
+	const payload = {
+		method: "GET",
+		headers: {
+			Authorization: `Bearer ${access_token}`,
+		},
+	};
+	const res = await fetch(url, payload);
+	const data = await res.json();
+	return data;
+};
+
+const tracks = await getTopTracks();
+const played = await recentlyPlayed();
+const artist = await getTopArtists();
 ---
 
 <section
-	class="flex flex-col md:grid md:grid-cols-2 p-3 gap-12 place-items-center w-full bg-amber-100"
+	class="flex flex-col md:grid md:grid-cols-2 p-3 gap-12 place-items-center w-full"
 >
 	<!-- Title -->
 	<div
@@ -35,12 +104,16 @@ import Note from "../images/gui/note.gif";
 			<span class="">Recently Played</span>
 		</div>
 		<!-- Button -->
-		<SpotifyButton
-			title="All Too Well (Ten Minutes Version) (Taylor's Version)"
-			artist="Taylor Swift"
-			picture={Sample.src}
-			link="/"
-		/>
+		{
+			(
+				<SpotifyButton
+					title={played.items[0].track.name}
+					artist={played.items[0].track.artists[0].name}
+					picture={played.items[0].track.album.images[0].url}
+					link={played.items[0].track.external_urls.spotify}
+				/>
+			)
+		}
 	</div>
 
 	<!-- Top Artist -->
@@ -52,13 +125,15 @@ import Note from "../images/gui/note.gif";
 			<span class="">Top Artist</span>
 		</div>
 		<!-- Button -->
-		<img
-			class="aspect-square w-full max-w-64 border-4 border-white object-cover drop-shadow-box"
-			src="https://www.billboard.com/wp-content/uploads/media/Taylor-Swift-press-by-Valheria-Rocha-2019-billboard-1548.jpg"
+		{
+			<img
+			class="aspect-square w-full max-w-56 border-4 border-white object-cover drop-shadow-box"
+			src={artist.items[0].images[0].url}
 		/>
 		<div class="absolute -bottom-3 -right-3 rotate-2 text-right">
-			<BigText>Taylor Swift</BigText>
+			<BigText>{artist.items[0].name}</BigText>
 		</div>
+		}
 		<img
 			class="absolute w-16 -right-5 top-10 rotate-6 drop-shadow-box"
 			src={Note.src}
@@ -73,23 +148,16 @@ import Note from "../images/gui/note.gif";
 			<span class="">Top Songs</span>
 		</div>
 		<!-- Button -->
-		<SpotifyButton
-			title="All Too Well (Ten Minutes Version) (Taylor's Version)"
-			artist="Taylor Swift"
-			picture={Sample.src}
-			link="/"
+		{
+			tracks.items.map((res:any, index:any) => (
+			<SpotifyButton
+			title={res.name}
+			artist={res.artists[0].name}
+			picture={res.album.images[0].url}
+			link={res.external_urls.spotify}
 		/>
-		<SpotifyButton
-			title="All Too Well (Ten Minutes Version) (Taylor's Version)"
-			artist="Taylor Swift"
-			picture={Sample.src}
-			link="/"
-		/>
-		<SpotifyButton
-			title="All Too Well (Ten Minutes Version) (Taylor's Version)"
-			artist="Taylor Swift"
-			picture={Sample.src}
-			link="/"
-		/>
+			))
+		}
+		
 	</div>
 </section>
