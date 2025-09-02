@@ -1,30 +1,95 @@
 ---
+import SpotifyButton from "../components/SpotifyButton.astro";
+
 import SpotifyPic from "../images/gui/spotify.png";
+
+import Sample from "../images/1989sample.png";
+
+import BigText from "../components/BigText.astro";
+
+import Note from "../images/gui/note.gif";
 ---
 
-<section class="bg-amber-50 p-3 flex flex-col w-full items-center">
-    <!-- Title -->
-    <div
-        class="flex gap-4 justify-center items-center bg-base-100 border-white border-4 p-2 px-3 w-full max-w-sm md:w-fit"
-    >
-        <img class="w-14" src={SpotifyPic.src} />
-        <div class="w-fit">
-            <span class="flex flex-col text-white text-xl md:text-2xl w-fit"
-                >My Spotify Stats</span
-            >
-            <span class="text-white text-xs">Updated</span>
-        </div>
-    </div>
+<section
+	class="flex flex-col md:grid md:grid-cols-2 p-3 gap-12 place-items-center w-full bg-amber-100"
+>
+	<!-- Title -->
+	<div
+		class="md:col-span-2 flex gap-4 justify-center items-center bg-base-100 border-white border-4 p-2 px-3 w-fit drop-shadow-box"
+	>
+		<img class="w-14" src={SpotifyPic.src} />
+		<div class="w-fit">
+			<span class="flex flex-col text-white text-xl md:text-2xl w-fit"
+				>My Spotify Stats</span
+			>
+			<span class="text-white text-xs">Updated</span>
+		</div>
+	</div>
 
-    <!-- Recently Played -->
-    <div>
-        <span
-            class="bg-green border-2 border-white p-2 px-3 text-white text-xl md:text-2xl"
-            >Recently Played</span
-        >
-    </div>
-    <!-- Top Artist -->
-    <div></div>
-    <!-- Top Songs -->
-    <div></div>
+	<!-- Recently Played -->
+	<div class="md:col-span-2 w-full max-w-md flex flex-col gap-2 items-center">
+		<!-- Label -->
+		<div
+			class="bg-green border-4 border-white p-2 text-white text-xl md:text-2xl w-full flex justify-center drop-shadow-box"
+		>
+			<span class="">Recently Played</span>
+		</div>
+		<!-- Button -->
+		<SpotifyButton
+			title="All Too Well (Ten Minutes Version) (Taylor's Version)"
+			artist="Taylor Swift"
+			picture={Sample.src}
+			link="/"
+		/>
+	</div>
+
+	<!-- Top Artist -->
+	<div class="w-fit max-w-md flex flex-col gap-2 items-center relative">
+		<!-- Label -->
+		<div
+			class="bg-green border-4 border-white p-2 text-white text-xl md:text-2xl w-full flex justify-center drop-shadow-box"
+		>
+			<span class="">Top Artist</span>
+		</div>
+		<!-- Button -->
+		<img
+			class="aspect-square w-full max-w-64 border-4 border-white object-cover drop-shadow-box"
+			src="https://www.billboard.com/wp-content/uploads/media/Taylor-Swift-press-by-Valheria-Rocha-2019-billboard-1548.jpg"
+		/>
+		<div class="absolute -bottom-3 -right-3 rotate-2 text-right">
+			<BigText>Taylor Swift</BigText>
+		</div>
+		<img
+			class="absolute w-16 -right-5 top-10 rotate-6 drop-shadow-box"
+			src={Note.src}
+		/>
+	</div>
+	<!-- Top Songs -->
+	<div class="w-full max-w-md flex flex-col gap-2 items-center">
+		<!-- Label -->
+		<div
+			class="bg-green border-4 border-white p-2 text-white text-xl md:text-2xl w-full flex justify-center drop-shadow-box"
+		>
+			<span class="">Top Songs</span>
+		</div>
+		<!-- Button -->
+		<SpotifyButton
+			title="All Too Well (Ten Minutes Version) (Taylor's Version)"
+			artist="Taylor Swift"
+			picture={Sample.src}
+			link="/"
+		/>
+		<SpotifyButton
+			title="All Too Well (Ten Minutes Version) (Taylor's Version)"
+			artist="Taylor Swift"
+			picture={Sample.src}
+			link="/"
+		/>
+		<SpotifyButton
+			title="All Too Well (Ten Minutes Version) (Taylor's Version)"
+			artist="Taylor Swift"
+			picture={Sample.src}
+			link="/"
+		/>
+	</div>
 </section>
