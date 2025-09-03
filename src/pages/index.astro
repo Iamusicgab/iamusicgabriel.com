@@ -10,22 +10,26 @@ import Marquee from "../components/Marquee";
 ---
 
 <html lang="en" class="bg-blue overflow-x-hidden">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Iamusicgabriel</title>
-	</head>
-	<Body>
-		<!-- Landing Page -->
-		<Landing />
-		<Marquee text="IAMUSICGABRIEL" client:load />
-		<div class="flex flex-col w-full justify-center self-center max-w-[1440px]">
-			<AboutMe />
-			<Spotify />
-
-			<div class="w-full h-256"></div>
-		</div>
-	</Body>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Iamusicgabriel</title>
+    </head>
+    <Body>
+        <!-- Landing Page -->
+        <Landing />
+        <Marquee text="IAMUSICGABRIEL" client:load />
+        <div
+            class="flex flex-col w-full justify-center self-center max-w-[1440px]"
+        >
+            <AboutMe />
+            <Spotify />
+        </div>
+        <div class="relative">
+            <Marquee text="awards" client:load />
+            <div class="absolute top-0 left-1/2">test</div>
+        </div>
+    </Body>
 </html>
