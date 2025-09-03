@@ -91,7 +91,11 @@ const artist = await getTopArtists();
 			<span class="flex flex-col text-white text-xl md:text-2xl w-fit"
 				>My Spotify Stats</span
 			>
-			<span class="text-white text-xs">Updated</span>
+			<span class="text-white text-xs"> {()=> {
+			let date = new Date();
+
+			return ("Updated " + date.toLocaleString());
+			}}</span>
 		</div>
 	</div>
 
