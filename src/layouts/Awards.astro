@@ -1,0 +1,38 @@
+---
+import PictureWindow from "../components/PictureWindow.astro";
+import Marquee from "../components/Marquee";
+import Trophy from "../images/gui/trophy.gif";
+---
+
+<div class="relative">
+	<Marquee text="AWARDS" client:load />
+
+	<img class="absolute m-auto inset-0 w-32 -top-10" src={Trophy.src} />
+</div>
+<section class="p-3 gap-3 grid">
+	<PictureWindow
+		title="this is a testing award with a very very very long title this is a testing award with a very very very long title"
+		picture="../images/awardsSample.png"
+		logo=""
+	/>
+	<PictureWindow
+		title="this is a testing award with a very very very long title this is a testing award with a very very very long title"
+		picture="../images/awardsSample.png"
+		logo=""
+	/>
+	<PictureWindow
+		title="this is a testing award with a very very very long title this is a testing award with a very very very long title"
+		picture="../images/awardsSample.png"
+		logo=""
+	/>
+	<PictureWindow
+		title="this is a testing award with a very very very long title this is a testing award with a very very very long title"
+		picture="../images/awardsSample.png"
+		logo=""
+	/>
+	<PictureWindow
+		title="this is a testing award with a very very very long title this is a testing award with a very very very long title"
+		picture="../images/awardsSample.png"
+		logo=""
+	/>
+</section>

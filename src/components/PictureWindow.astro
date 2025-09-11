@@ -1,0 +1,50 @@
+---
+const { picture, title, logo, link } = Astro.props;
+---
+
+<a href={link} ontouchstart="">
+	<div class="w-full max-w-xs drop-shadow-box relative group">
+		<!-- Window Title and Buttons -->
+		<div
+			class="flex align-middle justify-between bg-white group-hover:bg-pink w-full group-active:bg-base-100 items-center px-2 gap-4 transition"
+		>
+			<div class="flex gap-1 h-fit py-2">
+				<div class="w-2 h-2 bg-red rounded-full"></div>
+				<div class="w-2 h-2 bg-yellow2 rounded-full"></div>
+				<div class="w-2 h-2 bg-green rounded-full"></div>
+			</div>
+		</div>
+
+		<!-- Actual Window -->
+		<div
+			class="bg-cover bg-center h-48 border-b-4 border-r-4 border-l-4 border-white group-hover:border-pink group-active:border-base-100 transition"
+			style={`background-image: url(${picture});`}
+		>
+			<div
+				class="md:tracking-wide p-2 flex flex-col justify-end text-white gap-3 h-full bg-gradient-to-t from-base-100 group-hover:from-pink group-hover:to-transparent transition"
+			>
+				<img class="w-16" src={logo} />
+				<div class="flex justify-between gap-4">
+					<p class="text-lg leading-5 line-clamp-3">
+						{title}
+					</p>
+					<div
+						class="flex items-end relative transition group-hover:translate-x-2 group-hover:translate-y-2"
+					>
+						<svg
+							width="16"
+							height="16"
+							viewBox="0 0 16 16"
+							class=""
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M16 2.90323V15.9941H2.90909V13.0851H10.1818V11.6305H8.72727V10.176H7.27273V8.72141H5.81818V7.26687H4.36364V5.81232H2.90909V4.35778H1.45455V2.90323H0V1.44869H1.45455V-0.00585938H2.90909V1.44869H4.36364V2.90323H5.81818V4.35778H7.27273V5.81232H8.72727V7.26687H10.1818V8.72141H11.6364V10.176H13.0909V2.90323H16Z"
+								class="fill-white group-active:fill-base-100 transition"></path>
+						</svg>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</a>

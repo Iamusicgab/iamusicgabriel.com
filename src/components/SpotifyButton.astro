@@ -3,36 +3,32 @@ const { title, artist, picture, link } = Astro.props;
 ---
 
 <a
-    href={link}
-    class="transition flex bg-pink hover:bg-white p-2 text-white border-4 hover:border-pink active:border-white active:bg-base-100 gap-3 w-full justify-baseline max-w-md group drop-shadow-box"
+	href={link}
+	class="transition flex bg-pink hover:bg-white p-2 text-white border-4 hover:border-pink active:border-white active:bg-base-100 gap-3 w-full justify-baseline max-w-md group drop-shadow-box"
+	ontouchstart=""
 >
-    <img class="row-span-1 w-14 border-3" src={picture} />
-    <div class="flex flex-col justify-center w-full truncate min-w-0">
-        <p
-            class="text-lg truncate group-hover:text-pink group-active:text-white"
-        >
-            {title}
-        </p>
-        <p
-            class="text-xs truncate group-hover:text-pink group-active:text-white"
-        >
-            {artist}
-        </p>
-    </div>
-    <div
-        class="flex items-end relative transition group-hover:translate-x-2 group-hover:translate-y-2"
-    >
-        <svg
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            class=""
-            xmlns="http://www.w3.org/2000/svg"
-        >
-            <path
-                d="M16 2.90323V15.9941H2.90909V13.0851H10.1818V11.6305H8.72727V10.176H7.27273V8.72141H5.81818V7.26687H4.36364V5.81232H2.90909V4.35778H1.45455V2.90323H0V1.44869H1.45455V-0.00585938H2.90909V1.44869H4.36364V2.90323H5.81818V4.35778H7.27273V5.81232H8.72727V7.26687H10.1818V8.72141H11.6364V10.176H13.0909V2.90323H16Z"
-                class="fill-white group-hover:fill-pink group-active:fill-white"
-            ></path>
-        </svg>
-    </div>
+	<img class="row-span-1 w-14 border-3" src={picture} />
+	<div class="flex flex-col justify-center w-full truncate min-w-0">
+		<p class="text-lg truncate group-hover:text-pink group-active:text-white">
+			{title}
+		</p>
+		<p class="text-xs truncate group-hover:text-pink group-active:text-white">
+			{artist}
+		</p>
+	</div>
+	<div
+		class="flex items-end relative transition group-hover:translate-x-2 group-hover:translate-y-2"
+	>
+		<svg
+			width="16"
+			height="16"
+			viewBox="0 0 16 16"
+			class=""
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<path
+				d="M16 2.90323V15.9941H2.90909V13.0851H10.1818V11.6305H8.72727V10.176H7.27273V8.72141H5.81818V7.26687H4.36364V5.81232H2.90909V4.35778H1.45455V2.90323H0V1.44869H1.45455V-0.00585938H2.90909V1.44869H4.36364V2.90323H5.81818V4.35778H7.27273V5.81232H8.72727V7.26687H10.1818V8.72141H11.6364V10.176H13.0909V2.90323H16Z"
+				class="fill-white group-hover:fill-pink group-active:fill-white"></path>
+		</svg>
+	</div>
 </a>
