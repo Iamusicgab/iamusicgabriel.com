@@ -153,7 +153,7 @@ const artist = await getTopArtists();
 		</div>
 		<!-- Button -->
 		{
-			tracks.items.map((res:any, index:any) => (
+			tracks.items.map((res:any) => (
 			<SpotifyButton
 			title={res.name}
 			artist={res.artists[0].name}
