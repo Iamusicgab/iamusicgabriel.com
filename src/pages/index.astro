@@ -7,10 +7,8 @@ import AboutMe from "../layouts/AboutMe.astro";
 import Spotify from "../layouts/Spotify.astro";
 import Awards from "../layouts/Awards.astro";
 import Works from "../layouts/Works.astro";
-
-import Trophy from "../images/gui/trophy.gif";
-
-import Marquee from "../components/Marquee";
+import Education from "../layouts/Education.astro";
+import Affiliations from "../layouts/Affiliations.astro";
 ---
 
 <html lang="en" class="bg-blue overflow-x-hidden">
@@ -24,11 +22,13 @@ import Marquee from "../components/Marquee";
 	<Body>
 		<!-- Landing Page -->
 		<!-- <Landing /> -->
-		<div class="flex flex-col w-full justify-center self-center max-w-[1440px]">
-			<AboutMe />
+		<div class="flex flex-col w-full justify-center self-center gap-32">
+			<!-- <AboutMe />
 			<Spotify />
 			<Awards />
-			<Works />
+			<Works /> -->
+			<Education />
+			<Affiliations />
 		</div>
 
 		<div class="h-256"></div>

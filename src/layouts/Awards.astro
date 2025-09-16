@@ -4,34 +4,32 @@ import Marquee from "../components/Marquee";
 import Trophy from "../images/gui/trophy.gif";
 ---
 
-<div class="relative">
-	<Marquee text="AWARDS" client:load />
+<section class="flex flex-col">
+	<div class="relative">
+		<Marquee text="AWARDS" client:load />
 
-	<img class="absolute m-auto inset-0 w-32 -top-10" src={Trophy.src} />
-</div>
-<section
-	class="w-fit p-3 gap-3 grid sm:grid-cols-2 md:grid-cols-3 justify-items-center self-center"
->
-	<PictureWindow title="this e" picture="../images/awardsSample.png" logo="" />
-
-	<PictureWindow
-		title="this ile aeiowlh awilefh awleuhliAWFHUIL"
-		picture="../images/awardsSample.png"
-		logo=""
-	/>
-	<PictureWindow
-		title="this is a "
-		picture="../images/awardsSample.png"
-		logo=""
-	/>
-	<PictureWindow
-		title="this is "
-		picture="../images/awardsSample.png"
-		logo=""
-	/>
-	<PictureWindow
-		title="this is "
-		picture="../images/awardsSample.png"
-		logo=""
-	/>
+		<img class="absolute m-auto inset-0 w-32 -top-10" src={Trophy.src} />
+	</div>
+	<div
+		class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-content-center justify-items-center max-w-4xl m-auto gap-3 w-full p-3"
+	>
+		<PictureWindow
+			title="this is a testing of a very long title this is a testing of a very long title"
+		/>
+		<PictureWindow
+			title="this is a testing of a very long title this is a testing of a very long title"
+		/>
+		<PictureWindow
+			title="this is a testing of a very long title this is a testing of a very long title"
+		/>
+		<PictureWindow
+			title="this is a testing of a very long title this is a testing of a very long title"
+		/>
+		<PictureWindow
+			title="this is a testing of a very long title this is a testing of a very long title"
+		/>
+		<PictureWindow
+			title="this is a testing of a very long title this is a testing of a very long title"
+		/>
+	</div>
 </section>
