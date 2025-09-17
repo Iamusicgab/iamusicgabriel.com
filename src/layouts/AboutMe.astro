@@ -88,73 +88,14 @@ const birthdayYear = () => {
 ---
 
 <section
-	class="flex flex-col md:grid md:grid-cols-2 w-full gap-4 max-w-[1440px] m-auto"
+	class="flex flex-col md:grid md:grid-cols-2 w-full gap-4 max-w-[1024px] m-auto"
 >
-	<div class="h-120 md:h-175 w-full">
+	<div class="h-120 md:h-175 w-full flex flex-col items-center">
 		<MyId client:load />
+		<div class="bg-yellow border-4 border-base-100 p-3 text-xl">Drag me!</div>
 	</div>
 
 	<div class="w-full flex flex-col justify-center items-center gap-10 p-3">
-		<Window title="aboutMe.tsx" color="bg-pink" padding="p-3">
-			<div class="flex flex-col gap-4 max-w-sm">
-				<div class="text-white">
-					I’m Gabriel Gonzales, also known as Iamusicgabriel on streaming
-					platforms. A Computer Engineering student at the University of the
-					Philippines - Diliman. UI/UX Designer, frontend developer, filmmaker,
-					and artist!
-				</div>
-				<Button title="Full Bionote" link="/" />
-			</div>
-			<img
-				class="absolute right-0 lg:-right-10 -bottom-6 w-20 rotate-6 pixelated"
-				src={BMO.src}
-			/>
-		</Window>
-		<Window title="technologies.tsx" color="bg-pink" padding="p-3">
-			<div class="flex flex-col gap-4 max-w-md text-white overflow-x-hidden">
-				<div class="grid gap-2.5">
-					<span>Frontend Dev</span>
-					<div class="grid grid-flow-col gap-4 w-fit">
-						<img src={HTML.src} class="h-6" />
-						<img src={CSS.src} class="h-6" />
-						<img src={JS.src} class="h-6" />
-						<img src={React.src} class="h-6" />
-						<img src={Nextjs.src} class="h-6" />
-						<img src={AstroPicture.src} class="h-6" />
-						<img src={Tailwind.src} class="h-6" />
-					</div>
-				</div>
-				<div class="grid gap-2.5">
-					<span>Graphics, UI/UX</span>
-					<div class="grid grid-flow-col gap-4 w-fit">
-						<img src={Figma.src} class="h-6" />
-						<img src={Photoshop.src} class="h-6" />
-						<img src={Illustrator.src} class="h-6" />
-					</div>
-				</div>
-
-				<div class="grid gap-2.5">
-					<span>Video, Motion</span>
-					<div class="grid grid-flow-col gap-4 w-fit">
-						<img src={Premiere.src} class="h-6" />
-						<img src={AfterEffects.src} class="h-6" />
-					</div>
-				</div>
-
-				<div class="grid gap-2.5">
-					<span>Video, Motion</span>
-					<div class="grid grid-flow-col gap-4 w-fit">
-						<img src={Ableton.src} class="h-6" />
-					</div>
-				</div>
-			</div>
-			<img
-				class="absolute left-20 md:-left-10 -bottom-8 w-20 -rotate-6"
-				src={Laptop.src}
-			/>
-		</Window>
-	</div>
-	<div class="w-full flex justify-center items-center p-3 md:col-span-2">
 		<Window title="pokemonStats.dmg" color="bg-pink" padding="p-3">
 			<div class="grid gap-3">
 				<!-- Part 1 -->
@@ -331,6 +272,68 @@ const birthdayYear = () => {
 					</div>
 				</div>
 			</div>
+		</Window>
+	</div>
+	<div
+		class="w-full flex flex-col sm:flex-row justify-center items-center p-3 md:col-span-2 gap-12"
+	>
+		<Window title="aboutMe.tsx" color="bg-pink" padding="p-3">
+			<div class="flex flex-col gap-4 max-w-sm">
+				<div class="text-white">
+					I’m Gabriel Gonzales, also known as Iamusicgabriel on streaming
+					platforms. A Computer Engineering student at the University of the
+					Philippines - Diliman. UI/UX Designer, frontend developer, filmmaker,
+					and artist!
+				</div>
+				<Button title="Full Bionote" link="/" />
+			</div>
+			<img
+				class="absolute right-0 lg:-right-10 -bottom-6 w-20 rotate-6 pixelated"
+				src={BMO.src}
+			/>
+		</Window>
+		<Window title="technologies.tsx" color="bg-pink" padding="p-3">
+			<div class="flex flex-col gap-4 max-w-md text-white overflow-x-hidden">
+				<div class="grid gap-2.5">
+					<span>Frontend Dev</span>
+					<div class="grid grid-flow-col gap-4 w-fit">
+						<img src={HTML.src} class="h-6" />
+						<img src={CSS.src} class="h-6" />
+						<img src={JS.src} class="h-6" />
+						<img src={React.src} class="h-6" />
+						<img src={Nextjs.src} class="h-6" />
+						<img src={AstroPicture.src} class="h-6" />
+						<img src={Tailwind.src} class="h-6" />
+					</div>
+				</div>
+				<div class="grid gap-2.5">
+					<span>Graphics, UI/UX</span>
+					<div class="grid grid-flow-col gap-4 w-fit">
+						<img src={Figma.src} class="h-6" />
+						<img src={Photoshop.src} class="h-6" />
+						<img src={Illustrator.src} class="h-6" />
+					</div>
+				</div>
+
+				<div class="grid gap-2.5">
+					<span>Video, Motion</span>
+					<div class="grid grid-flow-col gap-4 w-fit">
+						<img src={Premiere.src} class="h-6" />
+						<img src={AfterEffects.src} class="h-6" />
+					</div>
+				</div>
+
+				<div class="grid gap-2.5">
+					<span>Video, Motion</span>
+					<div class="grid grid-flow-col gap-4 w-fit">
+						<img src={Ableton.src} class="h-6" />
+					</div>
+				</div>
+			</div>
+			<img
+				class="absolute left-20 md:-left-10 -bottom-8 w-20 -rotate-6"
+				src={Laptop.src}
+			/>
 		</Window>
 	</div>
 </section>

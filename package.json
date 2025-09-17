@@ -3,7 +3,7 @@
 	"type": "module",
 	"version": "0.0.1",
 	"scripts": {
-		"dev": "astro dev",
+		"dev": "astro dev --host",
 		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro"
@@ -24,6 +24,8 @@
 		"query-string": "^9.2.2",
 		"react": "^19.1.1",
 		"react-dom": "^19.1.1",
+		"react-is": "^19.1.1",
+		"styled-components": "^6.1.19",
 		"tailwindcss": "^4.1.11",
 		"three": "^0.179.1"
 	}

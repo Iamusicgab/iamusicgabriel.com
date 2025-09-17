@@ -1,0 +1,99 @@
+---
+import SectionTitle from "../components/SectionTitle.astro";
+import Window from "../components/Window.astro";
+import EducationPic from "../images/gui/education.svg";
+
+import Spotify from "../images/gui/spotify.png";
+import Facebook from "../images/gui/facebook.png";
+import Instagram from "../images/gui/instagram.png";
+import Github from "../images/gui/github.svg";
+---
+
+<section
+	class="flex flex-col p-3 gap-8 w-full max-w-[1440px] items-center self-center"
+>
+	<SectionTitle title="Contact" image={EducationPic} />
+
+	<div class="flex flex-col md:flex-row items-center justify-center gap-4">
+		<Window title="businessCard.tsx">
+			<div class="bg-yellow p-3 flex flex-col">
+				<div id="email" class="flex flex-col items-center">
+					<p class="text-xs">email</p>
+					<div class="flex flex-col w-full items-center h-fit">
+						<div id="rectangle" class="bg-base-100 w-0.5 h-4"></div>
+						<div id="rectangle" class="bg-base-100 w-full h-0.5"></div>
+						<div class="flex justify-between w-full h-fit">
+							<div id="rectangle" class="bg-base-100 w-0.5 h-4"></div>
+							<div id="rectangle" class="bg-base-100 w-0.5 h-4"></div>
+						</div>
+					</div>
+				</div>
+				<div class="flex">
+					<p class="text-xl md:text-2xl">me@</p>
+					<div>
+						<div class="flex flex-col">
+							<div class="flex">
+								<div class="flex flex-col w-full">
+									<p class="text-xl md:text-2xl">iamusicgabriel</p>
+									<div id="instagram" class="flex flex-col items-center">
+										<div class="flex flex-col w-full items-center h-fit">
+											<div class="flex justify-between w-full h-fit">
+												<div id="rectangle" class="bg-base-100 w-0.5 h-4"></div>
+												<div id="rectangle" class="bg-base-100 w-0.5 h-4"></div>
+											</div>
+											<div id="rectangle" class="bg-base-100 w-full h-0.5">
+											</div>
+											<div id="rectangle" class="bg-base-100 w-0.5 h-4"></div>
+										</div>
+										<p class="text-xs">instagram</p>
+									</div>
+								</div>
+								<p class="text-xl md:text-2xl">.com</p>
+							</div>
+							<div id="website" class="flex flex-col items-center">
+								<div class="flex flex-col w-full items-center h-fit">
+									<div class="flex justify-between w-full h-fit">
+										<div id="rectangle" class="bg-base-100 w-0.5 h-4"></div>
+										<div id="rectangle" class="bg-base-100 w-0.5 h-4"></div>
+									</div>
+									<div id="rectangle" class="bg-base-100 w-full h-0.5"></div>
+									<div id="rectangle" class="bg-base-100 w-0.5 h-4"></div>
+								</div>
+								<p class="text-xs">website</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</Window>
+		<Window title="socials.tsx">
+			<div class="bg-pink p-3 text-white flex gap-4">
+				<a
+					href="https://open.spotify.com/artist/2mWgy6G91EQdTadUqXwws4?si=2QE3T2Z_QxukcOZEZk5G3A"
+					><img
+						class="aspect-auto w-12 md:w-16 pixelated"
+						src={Spotify.src}
+					/></a
+				>
+				<a href="https://github.com/Iamusicgab"
+					><img
+						class="aspect-auto w-12 md:w-16 pixelated"
+						src={Github.src}
+					/></a
+				>
+				<a href="https://www.facebook.com/iamusicgabriel/"
+					><img
+						class="aspect-auto w-12 md:w-16 pixelated"
+						src={Facebook.src}
+					/></a
+				>
+				<a href="https://www.instagram.com/iamusicgabriel/"
+					><img
+						class="aspect-auto w-12 md:w-16 pixelated"
+						src={Instagram.src}
+					/></a
+				>
+			</div>
+		</Window>
+	</div>
+</section>

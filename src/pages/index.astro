@@ -9,9 +9,11 @@ import Awards from "../layouts/Awards.astro";
 import Works from "../layouts/Works.astro";
 import Education from "../layouts/Education.astro";
 import Affiliations from "../layouts/Affiliations.astro";
+import Contact from "../layouts/Contact.astro";
+import Footer from "../layouts/Footer.astro";
 ---
 
-<html lang="en" class="bg-blue overflow-x-hidden">
+<html lang="en" class="bg-blue overflow-x-hidden scroll-smooth">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -21,16 +23,16 @@ import Affiliations from "../layouts/Affiliations.astro";
 	</head>
 	<Body>
 		<!-- Landing Page -->
-		<!-- <Landing /> -->
+		<Landing />
 		<div class="flex flex-col w-full justify-center self-center gap-32">
-			<!-- <AboutMe />
+			<AboutMe />
 			<Spotify />
 			<Awards />
-			<Works /> -->
+			<Works />
 			<Education />
 			<Affiliations />
+			<Contact />
+			<Footer />
 		</div>
-
-		<div class="h-256"></div>
 	</Body>
 </html>

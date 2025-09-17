@@ -3,8 +3,6 @@ import SpotifyButton from "../components/SpotifyButton.astro";
 
 import SpotifyPic from "../images/gui/spotify.png";
 
-import Sample from "../images/1989sample.png";
-
 import BigText from "../components/BigText.astro";
 
 import Note from "../images/gui/note.gif";
@@ -80,11 +78,11 @@ const artist = await getTopArtists();
 ---
 
 <section
-	class="flex flex-col md:grid md:grid-cols-2 p-3 gap-12 place-items-center w-full max-w-[1440px] m-auto"
+	class="flex flex-col md:grid md:grid-cols-2 p-3 gap-12 place-items-center w-full max-w-[1024px] m-auto"
 >
 	<!-- Title -->
 	<div
-		class="md:col-span-2 flex gap-4 justify-center items-center bg-base-100 border-white border-4 p-2 px-3 w-fit drop-shadow-box"
+		class="md:col-span-2 flex gap-4 justify-center items-center bg-base-100 border-white border-4 p-2 px-3 w-full drop-shadow-box"
 	>
 		<img class="w-14" src={SpotifyPic.src} />
 		<div class="w-fit">
@@ -149,7 +147,7 @@ const artist = await getTopArtists();
 		<div
 			class="bg-green border-4 border-white p-2 text-white text-xl md:text-2xl w-full flex justify-center drop-shadow-box"
 		>
-			<span class="">Top Songs</span>
+			<span class="">Monthly Top Songs</span>
 		</div>
 		<!-- Button -->
 		{
