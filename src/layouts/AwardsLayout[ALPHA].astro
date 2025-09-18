@@ -1,0 +1,29 @@
+---
+const { frontmatter } = Astro.props;
+import "../styles/global.css";
+import Body from "./body.astro";
+import type { MarkdownLayoutProps } from "astro";
+
+type Props = MarkdownLayoutProps<{
+	award: string;
+	institution: string;
+	logo: string;
+	date: string;
+	image: string;
+}>;
+---
+
+<html lang="en" class="bg-blue overflow-x-hidden scroll-smooth">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>
+			{frontmatter.award} | {frontmatter.institution} - Iamusicgabriel
+		</title>
+	</head>
+	<Body> <div class="p-4 text-white">awef</div> </Body>
+
+
+</html>

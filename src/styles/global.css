@@ -40,6 +40,6 @@
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
-html {
-	cursor: url("../images/gui/cursor.png"), pointer;
-}
+/* .cursor {
+	cursor: url("../images/gui/normal.png"), auto;
+} */

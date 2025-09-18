@@ -16,23 +16,16 @@ import {
 	useSphericalJoint,
 } from "@react-three/rapier";
 import { MeshLineGeometry, MeshLineMaterial } from "meshline";
-import { useControls } from "leva";
 
 extend({ MeshLineGeometry, MeshLineMaterial });
 useGLTF.preload("/id.glb");
 useTexture.preload("/texture.png");
 
 export default function MyId() {
-	const { debug } = useControls({ debug: false });
 	return (
 		<Canvas camera={{ position: [0, 0, 10], fov: 20 }}>
 			<ambientLight intensity={Math.PI} />
-			<Physics
-				debug={debug}
-				interpolate
-				gravity={[0, -40, 0]}
-				timeStep={1 / 60}
-			>
+			<Physics interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
 				<Band />
 			</Physics>
 			<Environment background blur={0}>
@@ -70,7 +63,6 @@ export default function MyId() {
 }
 
 function Band({ maxSpeed = 50, minSpeed = 10 }) {
-	// Removed j3 from useRef
 	const band = useRef(),
 		fixed = useRef(),
 		j1 = useRef(),
@@ -99,24 +91,24 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
 			])
 	);
 	const [dragged, drag] = useState(false);
-	const [hovered, hover] = useState(false); // Removed the last rope joint and linked the card directly to j2
-	useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1]);
-	useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1]);
-	useSphericalJoint(j2, card, [
-		[0, 0, 0],
-		[0, 1.45, 0],
-	]);
-	useEffect(() => {
-		if (hovered) {
-			document.body.style.cursor = dragged ? "grabbing" : "grab";
-			return () => void (document.body.style.cursor = "auto");
-		}
-	}, [hovered, dragged]);
+	const [hovered, hover] = useState(false);
+
+	// Add a state to control the physics type, initially "kinematicPosition"
+	const [physicsType, setPhysicsType] = useState("kinematicPosition");
+
+	// A useFrame hook is crucial for Rapier animation.
 	useFrame((state, delta) => {
+		// If the component has dropped, set its position once and then let physics take over.
+		if (physicsType === "dynamic") {
+			// This is a one-time operation to release the card
+			card.current?.wakeUp();
+			setPhysicsType("dropped"); // Prevents future kinematic calls
+		}
+
 		if (dragged) {
 			vec.set(state.pointer.x, state.pointer.y, 0.5).unproject(state.camera);
 			dir.copy(vec).sub(state.camera.position).normalize();
-			vec.add(dir.multiplyScalar(state.camera.position.length())); // Removed j3 from wakeUp
+			vec.add(dir.multiplyScalar(state.camera.position.length()));
 			[card, j1, j2, fixed].forEach((ref) => ref.current?.wakeUp());
 			card.current?.setNextKinematicTranslation({
 				x: vec.x - dragged.x,
@@ -124,8 +116,8 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
 				z: vec.z - dragged.z,
 			});
 		}
+
 		if (fixed.current) {
-			// Loop is fine as is
 			[j1, j2].forEach((ref) => {
 				if (!ref.current.lerped)
 					ref.current.lerped = new THREE.Vector3().copy(
@@ -139,16 +131,38 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
 					ref.current.translation(),
 					delta * (minSpeed + clampedDistance * (maxSpeed - minSpeed))
 				);
-			}); // Updated curve points to reflect the new chain
+			});
 			curve.points[0].copy(j2.current.translation());
 			curve.points[1].copy(j1.current.lerped);
-			curve.points[2].copy(fixed.current.translation()); // The curve now only needs three points
-			band.current.geometry.setPoints(curve.getPoints(32)); // Tilt it back towards the screen
+			curve.points[2].copy(fixed.current.translation());
+			band.current.geometry.setPoints(curve.getPoints(32));
 			ang.copy(card.current.angvel());
 			rot.copy(card.current.rotation());
 			card.current.setAngvel({ x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z });
 		}
 	});
+
+	// Use useEffect to trigger the physics change
+	useEffect(() => {
+		// When the component is in view, change the physics type
+		// After one second, change physics type to dynamic.
+		const timeout = setTimeout(() => setPhysicsType("dynamic"), 5);
+		return () => clearTimeout(timeout);
+	}, []); // Only run once when the component is mounted
+
+	useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1]);
+	useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1]);
+	useSphericalJoint(j2, card, [
+		[0, 0, 0],
+		[0, 1.45, 0],
+	]);
+	// useEffect(() => {
+	// 	if (hovered) {
+	// 		document.body.style.cursor = dragged ? "grabbing" : "grab";
+	// 		return () => void (document.body.style.cursor = "auto");
+	// 	}
+	// }, [hovered, dragged]);
+
 	curve.curveType = "chordal";
 	texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
 	return (
@@ -161,12 +175,11 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
 				<RigidBody position={[1, 0, 0]} ref={j2} {...segmentProps}>
 					<BallCollider args={[0.1]} />
 				</RigidBody>
-				{/* Removed j3 from here */}
 				<RigidBody
 					position={[1.5, 0, 0]}
 					ref={card}
 					{...segmentProps}
-					type={dragged ? "kinematicPosition" : "dynamic"}
+					type={dragged ? "kinematicPosition" : physicsType}
 				>
 					<CuboidCollider args={[0.8, 1.125, 0.01]} />
 					<group
@@ -205,7 +218,6 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
 					</group>
 				</RigidBody>
 			</group>
-			{/* Add a position prop to the mesh to move only the lace */}
 			<mesh ref={band} position={[0, -0, 0]}>
 				<meshLineGeometry />
 				<meshLineMaterial

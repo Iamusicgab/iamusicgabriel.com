@@ -1,6 +1,4 @@
 ---
-import * as postTest from "../pages/awards/cinemapua2025.md";
-
 import PictureWindow from "../components/PictureWindow.astro";
 import Marquee from "../components/Marquee";
 import Trophy from "../images/gui/trophy.gif";
@@ -11,6 +9,7 @@ interface Frontmatter {
 	logo: string;
 	date: string;
 	image: string;
+	link: string;
 }
 
 const posts = await Astro.glob<Frontmatter>("../pages/awards/*.md");
@@ -37,6 +36,7 @@ posts.sort((a, b) => {
 						title={post.frontmatter.award}
 						title2={post.frontmatter.institution}
 						image={post.frontmatter.image}
+						link={post.frontmatter.link}
 					/>
 				);
 			})

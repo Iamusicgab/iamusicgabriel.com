@@ -1,7 +1,7 @@
 ---
 import Window from "../components/Window.astro";
 import Button from "../components/Button.astro";
-import MyId from "../components/MyId";
+import IdWithObserver from "../components/IdWithObserver";
 
 import BMO from "../images/bmo.gif";
 import Laptop from "../images/laptop.gif";
@@ -88,12 +88,9 @@ const birthdayYear = () => {
 ---
 
 <section
-	class="flex flex-col md:grid md:grid-cols-2 w-full gap-4 max-w-[1024px] m-auto"
+	class="flex flex-col md:grid md:grid-cols-2 w-full gap-4 max-w-[1440px] m-auto"
 >
-	<div class="h-120 md:h-175 w-full flex flex-col items-center">
-		<MyId client:load />
-		<div class="bg-yellow border-4 border-base-100 p-3 text-xl">Drag me!</div>
-	</div>
+	<IdWithObserver client:load />
 
 	<div class="w-full flex flex-col justify-center items-center gap-10 p-3">
 		<Window title="pokemonStats.dmg" color="bg-pink" padding="p-3">
@@ -190,7 +187,7 @@ const birthdayYear = () => {
 						<!-- INFP -->
 						<div class="flex gap-2 items-center">
 							<img class="w-5" src={Infp.src} />
-							<span class="text-lg">INFP</span>
+							<span class="text-lg">ENFP</span>
 						</div>
 						<!-- Princess Bubblegum -->
 						<div class="flex gap-2 items-center pixelated">

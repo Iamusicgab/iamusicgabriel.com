@@ -2,6 +2,21 @@
 import SectionTitle from "../components/SectionTitle.astro";
 import PictureWindow from "../components/PictureWindow.astro";
 import Education from "../images/gui/education.svg";
+
+interface Frontmatter {
+	title: string;
+	type: string;
+	date: string;
+	image: string;
+	link: string;
+}
+
+const posts = await Astro.glob<Frontmatter>("../pages/works/*.md");
+posts.sort((a, b) => {
+	let dateA = new Date(a.frontmatter.date);
+	let dateB = new Date(b.frontmatter.date);
+	return dateB.getTime() - dateA.getTime();
+});
 ---
 
 <section
@@ -11,23 +26,17 @@ import Education from "../images/gui/education.svg";
 	<div
 		class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-content-center justify-items-center max-w-4xl m-auto gap-3 w-full"
 	>
-		<PictureWindow
-			title="this is a testing of a very long title this is a testing of a very long title"
-		/>
-		<PictureWindow
-			title="this is a testing of a very long title this is a testing of a very long title"
-		/>
-		<PictureWindow
-			title="this is a testing of a very long title this is a testing of a very long title"
-		/>
-		<PictureWindow
-			title="this is a testing of a very long title this is a testing of a very long title"
-		/>
-		<PictureWindow
-			title="this is a testing of a very long title this is a testing of a very long title"
-		/>
-		<PictureWindow
-			title="this is a testing of a very long title this is a testing of a very long title"
-		/>
+		{
+			posts.slice(0, 6).map((post) => {
+				return (
+					<PictureWindow
+						title={post.frontmatter.title}
+						title2={post.frontmatter.type}
+						image={post.frontmatter.image}
+						link={post.frontmatter.link}
+					/>
+				);
+			})
+		}
 	</div>
 </section>
