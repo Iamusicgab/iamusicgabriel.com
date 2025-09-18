@@ -11,6 +11,8 @@ import Education from "../layouts/Education.astro";
 import Affiliations from "../layouts/Affiliations.astro";
 import Contact from "../layouts/Contact.astro";
 import Footer from "../layouts/Footer.astro";
+
+import LoadingGif from "../images/gui/loading.gif";
 ---
 
 <html lang="en" class="bg-blue overflow-x-hidden scroll-smooth cursor">
@@ -21,18 +23,45 @@ import Footer from "../layouts/Footer.astro";
 		<meta name="generator" content={Astro.generator} />
 		<title>Iamusicgabriel</title>
 	</head>
+	<script is:inline>
+		window.onload = () => {
+			document.querySelector("#dom").classList.remove("hidden");
+			setTimeout(() => {
+				document.querySelector("#loading").classList.add("scale-0");
+			}, 200);
+		};
+	</script>
+	<div
+		class="transition duration-300 ease-in w-full h-dvh fixed z-10"
+		id="loading"
+	>
+		<!-- <Loading /> -->
+		<div
+			class="flex justify-center items-center w-full h-full flex-col gap-4 bg-blue border-yellow border-8"
+		>
+			<img class="w-36 pixelated" src={LoadingGif.src} />
+			<p
+				class="text-lg text-base-100 bg-yellow px-3 py-2 border-4 border-base-100"
+			>
+				Loading...
+			</p>
+		</div>
+	</div>
 	<Body>
-		<!-- Landing Page -->
-		<Landing />
-		<div class="flex flex-col w-full justify-center self-center gap-32">
-			<AboutMe />
-			<Spotify />
-			<Awards />
-			<Works />
-			<Education />
-			<Affiliations />
-			<Contact />
-			<Footer />
+		<div class="hidden" id="dom">
+			<Landing />
+			<div class="flex flex-col w-full justify-center self-center gap-32">
+				<AboutMe />
+				<Spotify />
+				<Awards />
+				<Works />
+				<Education />
+				<Affiliations />
+				<Contact />
+				<Footer />
+			</div>
 		</div>
 	</Body>
+
+
 </html>
