@@ -23,7 +23,7 @@ useTexture.preload("/texture.png");
 
 export default function MyId() {
 	return (
-		<Canvas camera={{ position: [0, 0, 10], fov: 20 }}>
+		<Canvas className="cursor-move" camera={{ position: [0, 0, 10], fov: 20 }}>
 			<ambientLight intensity={Math.PI} />
 			<Physics interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
 				<Band />
@@ -144,11 +144,8 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
 
 	// Use useEffect to trigger the physics change
 	useEffect(() => {
-		// When the component is in view, change the physics type
-		// After one second, change physics type to dynamic.
-		const timeout = setTimeout(() => setPhysicsType("dynamic"), 5);
-		return () => clearTimeout(timeout);
-	}, []); // Only run once when the component is mounted
+		setPhysicsType("dynamic");
+	}, []);
 
 	useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1]);
 	useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1]);

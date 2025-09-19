@@ -282,14 +282,14 @@ const birthdayYear = () => {
 					Philippines - Diliman. UI/UX Designer, frontend developer, filmmaker,
 					and artist!
 				</div>
-				<Button title="Full Bionote" link="/" />
+				<Button title="Full Bionote" onClick="openDialog()" />
 			</div>
 			<img
 				class="absolute right-0 lg:-right-10 -bottom-6 w-20 rotate-6 pixelated"
 				src={BMO.src}
 			/>
 		</Window>
-		<dialog>awef</dialog>
+
 		<Window title="technologies.tsx" color="bg-pink" padding="p-3">
 			<div class="flex flex-col gap-4 max-w-md text-white overflow-x-hidden">
 				<div class="grid gap-2.5">
@@ -334,4 +334,39 @@ const birthdayYear = () => {
 			/>
 		</Window>
 	</div>
+
+	<dialog
+		class="fixed bg-yellow z-30 inset-0 h-fit mx-auto mt-auto md:mb-auto w-full max-w-xl text-base-100 drop-shadow-box transition ease-out duration-150 scale-0 md:border-4 md:border-white"
+		id="dialog"
+	>
+		<div
+			class="flex align-middle justify-between bg-white w-full items-center px-2 gap-4"
+		>
+			<button
+				onclick="closeDialog()"
+				class="text-base-100 text-xl cursor-pointer">X</button
+			>
+
+			<div>
+				<span class="text-xs h-fit select-none text-base-100">bionote.tsx</span>
+			</div>
+		</div>
+		<div class="p-6 flex flex-col items-center gap-4">
+			<img
+				class="aspect-square border-4 border-white object-cover w-64 md:w-90"
+				src="https://i.imgur.com/kiWCSbb.jpeg"
+			/>
+			<p class="text-sm md:text-base">
+				Gabriel Alexis Gonzales, known professionally as Iamusicgabriel, is a
+				front end dev and UI/UX designer. Pursuing a BS in Computer Engineering
+				at the University of the Philippines - Diliman. Proclaimed as one of the
+				Ten Outstanding Students of Makati and proud recipient of the Junior
+				Chamber International Youth Leadership Excellence Award. Served as the
+				Student Government President for Don Bosco Makati SHS Department and
+				Student Council President of Don Bosco Makati JHS Department. The
+				founder and co-lead of Don Bosco Makati - Hack Club. An esteemed member
+				of Vision Media Productions.
+			</p>
+		</div>
+	</dialog>
 </section>

@@ -15,7 +15,7 @@ import Footer from "../layouts/Footer.astro";
 import LoadingGif from "../images/gui/loading.gif";
 ---
 
-<html lang="en" class="bg-blue overflow-x-hidden scroll-smooth cursor">
+<html lang="en" class="bg-blue overflow-x-hidden scroll-smooth">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -25,29 +25,45 @@ import LoadingGif from "../images/gui/loading.gif";
 	</head>
 	<script is:inline>
 		window.onload = () => {
-			document.querySelector("#dom").classList.remove("hidden");
+			setTimeout(() => {
+				document.querySelector("#dom").classList.remove("hidden");
+			}, 50); // give browser time to begin scale-out
 			setTimeout(() => {
 				document.querySelector("#loading").classList.add("scale-0");
-			}, 200);
+			}, 600);
 		};
+
+		function openDialog() {
+			document.getElementById("dialog").showModal();
+			setTimeout(() => {
+				document.getElementById("dialog").classList.remove("scale-0");
+				document.getElementById("dialog").classList.add("scale-100");
+			}, 200);
+		}
+		function closeDialog() {
+			document.getElementById("dialog").classList.remove("scale-100");
+			document.getElementById("dialog").classList.add("scale-0");
+			setTimeout(() => {
+				document.getElementById("dialog").close();
+			}, 200);
+		}
 	</script>
-	<div
-		class="transition duration-300 ease-in w-full h-dvh fixed z-10"
-		id="loading"
-	>
-		<!-- <Loading /> -->
-		<div
-			class="flex justify-center items-center w-full h-full flex-col gap-4 bg-blue border-yellow border-8"
-		>
-			<img class="w-36 pixelated" src={LoadingGif.src} />
-			<p
-				class="text-lg text-base-100 bg-yellow px-3 py-2 border-4 border-base-100"
-			>
-				Loading...
-			</p>
-		</div>
-	</div>
+
 	<Body>
+		<div
+			class="transition duration-300 ease-in w-full h-dvh fixed z-50"
+			id="loading"
+		>
+			<!-- <Loading /> -->
+			<div
+				class="flex justify-center items-center w-full h-full flex-col gap-4 bg-blue border-white border-8"
+			>
+				<img class="w-36 pixelated" src={LoadingGif.src} />
+				<p class="text-lg text-white bg-pink px-3 py-2 border-4 border-white">
+					Loading...
+				</p>
+			</div>
+		</div>
 		<div class="hidden" id="dom">
 			<Landing />
 			<div class="flex flex-col w-full justify-center self-center gap-32">
@@ -62,6 +78,4 @@ import LoadingGif from "../images/gui/loading.gif";
 			</div>
 		</div>
 	</Body>
-
-
 </html>
