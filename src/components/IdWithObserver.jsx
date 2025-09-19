@@ -5,16 +5,16 @@ export default function IdWithObserver() {
 	const { ref, inView } = useInView({
 		// Only trigger the animation once to avoid it re-dropping on subsequent scrolls.
 		triggerOnce: true,
-		threshold: 0.7,
+		threshold: 0.6,
 	});
 
 	return (
 		<div
 			ref={ref}
-			class="h-120 md:h-175 w-full flex flex-col items-center relative "
+			className="h-120 md:h-175 w-full flex flex-col items-center relative "
 		>
 			{inView && <MyId client:load />}
-			<div class="bg-yellow border-4 border-base-100 p-2 absolute flex flex-col items-center w-fit h-fit bottom-0 text-sm">
+			<div className="bg-yellow border-4 border-base-100 p-2 absolute flex flex-col items-center w-fit h-fit bottom-0 text-sm">
 				<div>↑↑↑</div>
 				<p>Drag me!</p>
 			</div>

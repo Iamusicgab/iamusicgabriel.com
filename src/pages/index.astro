@@ -13,6 +13,16 @@ import Contact from "../layouts/Contact.astro";
 import Footer from "../layouts/Footer.astro";
 
 import LoadingGif from "../images/gui/loading.gif";
+
+let choices = [
+	"Generating world...",
+	"Booting system...",
+	"Rendering pixels...",
+	"Assembling interface...",
+	"Inserting cartridge...",
+];
+const randomIndex = Math.floor(Math.random() * choices.length);
+const chosen = choices[randomIndex];
 ---
 
 <html lang="en" class="bg-blue overflow-x-hidden scroll-smooth">
@@ -25,20 +35,34 @@ import LoadingGif from "../images/gui/loading.gif";
 	</head>
 	<script is:inline>
 		window.onload = () => {
+			const dom = document.querySelector("#dom");
+			const loading = document.querySelector("#loading");
+
 			setTimeout(() => {
-				document.querySelector("#dom").classList.remove("hidden");
-			}, 50); // give browser time to begin scale-out
-			setTimeout(() => {
-				document.querySelector("#loading").classList.add("scale-0");
-			}, 600);
+				dom.classList.remove("hidden");
+				setTimeout(() => {
+					loading.classList.add("scale-0");
+				}, 1300);
+			}, 500);
 		};
 
+		document.addEventListener("astro:page-load", () => {
+			console.log("page loaded");
+		});
+
 		function openDialog() {
-			document.getElementById("dialog").showModal();
-			setTimeout(() => {
-				document.getElementById("dialog").classList.remove("scale-0");
-				document.getElementById("dialog").classList.add("scale-100");
-			}, 200);
+			const dialog = document.getElementById("dialog");
+			dialog.showModal();
+			dialog.classList.remove("scale-100");
+			dialog.classList.add("scale-0");
+
+			// Force a reflow before applying scale-100 for smooth animation
+			requestAnimationFrame(() => {
+				requestAnimationFrame(() => {
+					dialog.classList.remove("scale-0");
+					dialog.classList.add("scale-100");
+				});
+			});
 		}
 		function closeDialog() {
 			document.getElementById("dialog").classList.remove("scale-100");
@@ -51,7 +75,7 @@ import LoadingGif from "../images/gui/loading.gif";
 
 	<Body>
 		<div
-			class="transition duration-300 ease-in w-full h-dvh fixed z-50"
+			class="transition duration-300 ease-in w-full h-full fixed z-50"
 			id="loading"
 		>
 			<!-- <Loading /> -->
@@ -60,7 +84,7 @@ import LoadingGif from "../images/gui/loading.gif";
 			>
 				<img class="w-36 pixelated" src={LoadingGif.src} />
 				<p class="text-lg text-white bg-pink px-3 py-2 border-4 border-white">
-					Loading...
+					{chosen}
 				</p>
 			</div>
 		</div>
