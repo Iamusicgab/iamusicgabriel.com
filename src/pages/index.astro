@@ -15,91 +15,99 @@ import Footer from "../layouts/Footer.astro";
 import LoadingGif from "../images/gui/loading.gif";
 
 let choices = [
-	"Generating world...",
-	"Booting system...",
-	"Rendering pixels...",
-	"Assembling interface...",
-	"Inserting cartridge...",
+    "Generating world...",
+    "Booting system...",
+    "Rendering pixels...",
+    "Assembling interface...",
+    "Inserting cartridge...",
 ];
 const randomIndex = Math.floor(Math.random() * choices.length);
 const chosen = choices[randomIndex];
 ---
 
 <html lang="en" class="bg-blue overflow-x-hidden scroll-smooth">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Iamusicgabriel</title>
-	</head>
-	<script is:inline>
-		window.onload = () => {
-			const dom = document.querySelector("#dom");
-			const loading = document.querySelector("#loading");
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Iamusicgabriel</title>
+    </head>
+    <script is:inline>
+        window.onload = () => {
+            const dom = document.querySelector("#dom");
+            const loading = document.querySelector("#loading");
 
-			setTimeout(() => {
-				dom.classList.remove("hidden");
-				setTimeout(() => {
-					loading.classList.add("scale-0");
-				}, 1300);
-			}, 500);
-		};
+            setTimeout(() => {
+                dom.classList.remove("hidden");
+                setTimeout(() => {
+                    loading.classList.add("scale-0");
+                }, 1300);
+            }, 500);
+        };
 
-		document.addEventListener("astro:page-load", () => {
-			console.log("page loaded");
-		});
+        document.addEventListener("astro:page-load", () => {
+            console.log("page loaded");
+        });
 
-		function openDialog() {
-			const dialog = document.getElementById("dialog");
-			dialog.showModal();
-			dialog.classList.remove("scale-100");
-			dialog.classList.add("scale-0");
+        function openDialog() {
+            const dialog = document.getElementById("dialog");
+            dialog.showModal();
+            dialog.classList.remove("scale-100");
+            dialog.classList.add("scale-0");
 
-			// Force a reflow before applying scale-100 for smooth animation
-			requestAnimationFrame(() => {
-				requestAnimationFrame(() => {
-					dialog.classList.remove("scale-0");
-					dialog.classList.add("scale-100");
-				});
-			});
-		}
-		function closeDialog() {
-			document.getElementById("dialog").classList.remove("scale-100");
-			document.getElementById("dialog").classList.add("scale-0");
-			setTimeout(() => {
-				document.getElementById("dialog").close();
-			}, 200);
-		}
-	</script>
+            // Force a reflow before applying scale-100 for smooth animation
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    dialog.classList.remove("scale-0");
+                    dialog.classList.add("scale-100");
+                });
+            });
+        }
+        function closeDialog() {
+            document.getElementById("dialog").classList.remove("scale-100");
+            document.getElementById("dialog").classList.add("scale-0");
+            setTimeout(() => {
+                document.getElementById("dialog").close();
+            }, 200);
+        }
 
-	<Body>
-		<div
-			class="transition duration-300 ease-in w-full h-full fixed z-50"
-			id="loading"
-		>
-			<!-- <Loading /> -->
-			<div
-				class="flex justify-center items-center w-full h-full flex-col gap-4 bg-blue border-white border-8"
-			>
-				<img class="w-36 pixelated" src={LoadingGif.src} />
-				<p class="text-lg text-white bg-pink px-3 py-2 border-4 border-white">
-					{chosen}
-				</p>
-			</div>
-		</div>
-		<div class="hidden" id="dom">
-			<Landing />
-			<div class="flex flex-col w-full justify-center self-center gap-32">
-				<AboutMe />
-				<Spotify />
-				<Awards />
-				<Works />
-				<Education />
-				<Affiliations />
-				<Contact />
-				<Footer />
-			</div>
-		</div>
-	</Body>
+        window.addEventListener("click", () => {
+            if (event.target.id === "dialog") {
+                closeDialog();
+            }
+        });
+    </script>
+
+    <Body>
+        <div
+            class="transition duration-300 ease-in w-full h-full fixed z-50"
+            id="loading"
+        >
+            <!-- <Loading /> -->
+            <div
+                class="flex justify-center items-center w-full h-full flex-col gap-4 bg-blue border-white border-8"
+            >
+                <img class="w-36 pixelated" src={LoadingGif.src} />
+                <p
+                    class="text-lg text-white bg-pink px-3 py-2 border-4 border-white"
+                >
+                    {chosen}
+                </p>
+            </div>
+        </div>
+        <div class="hidden" id="dom">
+            <Landing />
+            <div class="flex flex-col w-full justify-center self-center gap-32">
+                <AboutMe />
+                <Spotify />
+                <Awards />
+                <Works />
+                <Education />
+                <Affiliations />
+                <Contact />
+                <Footer />
+            </div>
+        </div>
+    </Body>
 </html>
