@@ -16,7 +16,11 @@ export default defineConfig({
 
 	integrations: [react()],
 	output: "server",
-	adapter: vercel(),
+	adapter: vercel({
+		webAnalytics: {
+			enabled: true,
+		},
+	}),
 	server: {
 		allowedHosts: ["rare-deer-allow.loca.lt"],
 	},
