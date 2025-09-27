@@ -17,6 +17,9 @@ posts.sort((a, b) => {
 	let dateB = new Date(b.frontmatter.date);
 	return dateB.getTime() - dateA.getTime();
 });
+
+const postsUpdated = await import.meta.glob<Frontmatter>("../pages/works/*.md");
+console.log(postsUpdated);
 ---
 
 <section
