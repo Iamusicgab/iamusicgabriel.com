@@ -28,55 +28,92 @@ const chosen = choices[randomIndex];
 <html lang="en" class="bg-blue overflow-x-hidden scroll-smooth">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.gif" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+		<!-- Primary Meta Tags -->
 		<title>Iamusicgabriel</title>
-	</head>
-	<script is:inline>
-		window.onload = () => {
-			const dom = document.querySelector("#dom");
-			const loading = document.querySelector("#loading");
+		<meta name="title" content="Iamusicgabriel" />
+		<meta
+			name="description"
+			content="Welcome to my world, my friend. I’m Gabriel Gonzales, also known as Iamusicgabriel, a Computer Engineering student at the University of the Philippines - Diliman. UI/UX Designer, frontend developer, filmmaker, and artist!
 
-			setTimeout(() => {
-				dom.classList.remove("hidden");
+"
+		/>
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://iamusicgabriel.com/" />
+		<meta property="og:title" content="Iamusicgabriel" />
+		<meta
+			property="og:description"
+			content="Welcome to my world, my friend. I’m Gabriel Gonzales, also known as Iamusicgabriel, a Computer Engineering student at the University of the Philippines - Diliman. UI/UX Designer, frontend developer, filmmaker, and artist!
+
+"
+		/>
+		<meta property="og:image" content="https://iamusicgabriel.com/meta.png" />
+
+		<!-- X (Twitter) -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content="https://iamusicgabriel.com/" />
+		<meta property="twitter:title" content="Iamusicgabriel" />
+		<meta
+			property="twitter:description"
+			content="Welcome to my world, my friend. I’m Gabriel Gonzales, also known as Iamusicgabriel, a Computer Engineering student at the University of the Philippines - Diliman. UI/UX Designer, frontend developer, filmmaker, and artist!
+
+"
+		/>
+		<meta
+			property="twitter:image"
+			content="https://iamusicgabriel.com/meta.png"
+		/>
+
+		<!-- Meta Tags Generated with https://metatags.io -->
+		<script is:inline>
+			window.onload = () => {
+				const dom = document.querySelector("#dom");
+				const loading = document.querySelector("#loading");
+
 				setTimeout(() => {
-					loading.classList.add("scale-0");
-				}, 1300);
-			}, 500);
-		};
+					dom.classList.remove("hidden");
+					setTimeout(() => {
+						loading.classList.add("scale-0");
+					}, 1300);
+				}, 500);
+			};
 
-		document.addEventListener("astro:page-load", () => {
-			console.log("page loaded");
-		});
-
-		function openDialog() {
-			const dialog = document.getElementById("dialog");
-			dialog.showModal();
-			dialog.scrollTop = 0;
-
-			// Force a reflow before applying scale-100 for smooth animation
-			requestAnimationFrame(() => {
-				requestAnimationFrame(() => {
-					dialog.classList.remove("scale-0");
-					dialog.classList.add("scale-100");
-				});
+			document.addEventListener("astro:page-load", () => {
+				console.log("page loaded");
 			});
-		}
-		function closeDialog() {
-			document.getElementById("dialog").classList.remove("scale-100");
-			document.getElementById("dialog").classList.add("scale-0");
-			setTimeout(() => {
-				document.getElementById("dialog").close();
-			}, 200);
-		}
 
-		window.addEventListener("click", () => {
-			if (event.target.id === "dialog") {
-				closeDialog();
+			function openDialog() {
+				const dialog = document.getElementById("dialog");
+				dialog.showModal();
+				dialog.scrollTop = 0;
+
+				// Force a reflow before applying scale-100 for smooth animation
+				requestAnimationFrame(() => {
+					requestAnimationFrame(() => {
+						dialog.classList.remove("scale-0");
+						dialog.classList.add("scale-100");
+					});
+				});
 			}
-		});
-	</script>
+			function closeDialog() {
+				document.getElementById("dialog").classList.remove("scale-100");
+				document.getElementById("dialog").classList.add("scale-0");
+				setTimeout(() => {
+					document.getElementById("dialog").close();
+				}, 200);
+			}
+
+			window.addEventListener("click", () => {
+				if (event.target.id === "dialog") {
+					closeDialog();
+				}
+			});
+		</script></head
+	>
 
 	<Body>
 		<div
