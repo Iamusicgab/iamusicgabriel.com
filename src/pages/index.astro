@@ -1,87 +1,110 @@
 ---
-import Nav from "../layouts/Nav.astro";
+import "../styles/global.css";
+
+import Body from "../layouts/body.astro";
 import Landing from "../layouts/Landing.astro";
-import Notables from "../layouts/Notables.astro";
+import AboutMe from "../layouts/AboutMe.astro";
+import Spotify from "../layouts/Spotify.astro";
+import Awards from "../layouts/Awards.astro";
 import Works from "../layouts/Works.astro";
+import Education from "../layouts/Education.astro";
+import Affiliations from "../layouts/Affiliations.astro";
+import Contact from "../layouts/Contact.astro";
 import Footer from "../layouts/Footer.astro";
-import About from "../layouts/About.astro";
-import Loading from "../layouts/Loading.astro";
-import SmallPlaceholder from "../components/SmallPlaceholder.astro";
-import IndexNav from "../layouts/IndexNav.astro";
-import "@fontsource-variable/lexend-mega";
-import Skills from "../layouts/Skills.astro";
-import Socials from "../layouts/Socials.astro";
-import Training from "../layouts/Training.astro";
+
+import LoadingGif from "../images/gui/loading.gif";
+
+let choices = [
+	"Generating world...",
+	"Booting system...",
+	"Rendering pixels...",
+	"Assembling interface...",
+	"Inserting cartridge...",
+];
+const randomIndex = Math.floor(Math.random() * choices.length);
+const chosen = choices[randomIndex];
 ---
 
-<html lang="en" data-theme="mytheme" class="tracking-tighter">
+<html lang="en" class="bg-blue overflow-x-hidden scroll-smooth">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/star2.svg" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<!-- Primary Meta Tags -->
-		<title>Iamusicgabriel</title>
-		<meta name="title" content="Iamusicgabriel" />
-		<meta
-			name="description"
-			content="Narcissistic and arrogant. Welcome to my world, my friend."
-		/>
-
-		<!-- Open Graph / Facebook -->
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content="https://iamusicgabriel.com/" />
-		<meta property="og:title" content="Iamusicgabriel" />
-		<meta
-			property="og:description"
-			content="Narcissistic and arrogant. Welcome to my world, my friend."
-		/>
-		<meta property="og:image" content="https://iamusicgabriel.com/meta.jpg" />
-
-		<!-- Twitter -->
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content="https://iamusicgabriel.com/" />
-		<meta property="twitter:title" content="Iamusicgabriel" />
-		<meta
-			property="twitter:description"
-			content="Narcissistic and arrogant. Welcome to my world, my friend."
-		/>
-		<meta
-			property="twitter:image"
-			content="https://iamusicgabriel.com/meta.jpg"
-		/>
-
-		<!-- Meta Tags Generated with https://metatags.io -->
 		<title>Iamusicgabriel</title>
 	</head>
 	<script is:inline>
 		window.onload = () => {
+			const dom = document.querySelector("#dom");
+			const loading = document.querySelector("#loading");
+
 			setTimeout(() => {
-				document.querySelector("#loading").classList.add("hidden");
-				document.querySelector("#dom").classList.remove("hidden");
-				document.querySelector("#dom").classList.add("flex");
-				document.querySelector("#dom").classList.add("scale-100");
-			}, 50);
+				dom.classList.remove("hidden");
+				setTimeout(() => {
+					loading.classList.add("scale-0");
+				}, 1300);
+			}, 500);
 		};
+
+		document.addEventListener("astro:page-load", () => {
+			console.log("page loaded");
+		});
+
+		function openDialog() {
+			const dialog = document.getElementById("dialog");
+			dialog.showModal();
+			dialog.scrollTop = 0;
+
+			// Force a reflow before applying scale-100 for smooth animation
+			requestAnimationFrame(() => {
+				requestAnimationFrame(() => {
+					dialog.classList.remove("scale-0");
+					dialog.classList.add("scale-100");
+				});
+			});
+		}
+		function closeDialog() {
+			document.getElementById("dialog").classList.remove("scale-100");
+			document.getElementById("dialog").classList.add("scale-0");
+			setTimeout(() => {
+				document.getElementById("dialog").close();
+			}, 200);
+		}
+
+		window.addEventListener("click", () => {
+			if (event.target.id === "dialog") {
+				closeDialog();
+			}
+		});
 	</script>
 
-	<body class="bg-base-100">
-		<div id="loading" class="">
-			<Loading />
-		</div>
+	<Body>
 		<div
-			id="dom"
-			class="hidden flex-col items-center w-full transition-all scale-0 gap-5"
+			class="transition duration-300 ease-in w-full h-full fixed z-50"
+			id="loading"
 		>
-			<IndexNav />
-			<Landing />
-			<About />
-			<Skills />
-			<Notables />
-			<Training />
-			<Works />
-			<Socials />
-			<Footer />
+			<!-- <Loading /> -->
+			<div
+				class="flex justify-center items-center w-full h-full flex-col gap-4 bg-blue border-white border-8"
+			>
+				<img class="w-36 pixelated" src={LoadingGif.src} />
+				<p class="text-lg text-white bg-pink px-3 py-2 border-4 border-white">
+					{chosen}
+				</p>
+			</div>
 		</div>
-	</body>
+		<div class="hidden" id="dom">
+			<Landing />
+			<div class="flex flex-col w-full justify-center self-center gap-32">
+				<AboutMe />
+				<Spotify />
+				<Awards />
+				<Works />
+				<Education />
+				<Affiliations />
+				<Contact />
+				<Footer />
+			</div>
+		</div>
+	</Body>
 </html>

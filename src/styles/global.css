@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap");
+
+@import "tailwindcss";
+
+@theme {
+	--color-base-100: #242424;
+	--color-pink: #ec43ae;
+	--color-white: #fdf5ee;
+	--color-blue: #3445ed;
+	--color-yellow: #ffe62c;
+	--color-orange: #fb5238;
+	--color-red: #ea6c5e;
+	--color-yellow2: #f4bf53;
+	--color-green: #5fc55a;
+	--color-violet: #3445ed;
+	--font-pixelify: "Pixelify Sans", sans-serif;
+	--drop-shadow-box: 5px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.BigText {
+	background: linear-gradient(
+		90deg,
+		rgb(255, 197, 60),
+		rgb(251, 82, 56),
+		rgb(255, 0, 208)
+	);
+	color: #fdf5ee;
+	-webkit-background-clip: text;
+	-webkit-text-stroke: 8px transparent;
+	line-height: 70%;
+	padding: 8px;
+	width: fit-content;
+}
+
+.pixelated {
+	image-rendering: pixelated;
+}
+
+.gridheights {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+/* html {
+	cursor: url("../images/gui/normal.png"), auto;
+	cursor: url("../images/gui/move.png"), move;
+} */

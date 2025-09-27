@@ -1,0 +1,165 @@
+---
+import SpotifyButton from "../components/SpotifyButton.astro";
+
+import SpotifyPic from "../images/gui/spotify.png";
+
+import BigText from "../components/BigText.astro";
+
+import Note from "../images/gui/note.gif";
+import "dotenv/config";
+import QueryString from "query-string";
+const refresh_token = process.env.REFRESH_TOKEN;
+const basic = process.env.BASIC;
+const getAccessToken = async () => {
+	const url = "https://accounts.spotify.com/api/token";
+	const payload = {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/x-www-form-urlencoded",
+			Authorization: `Basic ${basic}`,
+		},
+		body: QueryString.stringify({
+			grant_type: "refresh_token",
+			refresh_token,
+		}),
+	};
+
+	const res = await fetch(url, payload);
+	const data = await res.json();
+	return data;
+};
+
+const getTopArtists = async () => {
+	const { access_token } = await getAccessToken();
+	const url =
+		"https://api.spotify.com/v1/me/top/artists?time_range=short_term&limit=1";
+	const payload = {
+		method: "GET",
+		headers: {
+			Authorization: `Bearer ${access_token}`,
+		},
+	};
+	const res = await fetch(url, payload);
+	const data = await res.json();
+	return data;
+};
+const getTopTracks = async () => {
+	const { access_token } = await getAccessToken();
+	const url =
+		"https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=3";
+	const payload = {
+		method: "GET",
+		headers: {
+			Authorization: `Bearer ${access_token}`,
+		},
+	};
+	const res = await fetch(url, payload);
+	const data = await res.json();
+	return data;
+};
+
+const recentlyPlayed = async () => {
+	const { access_token } = await getAccessToken();
+	const url = "https://api.spotify.com/v1/me/player/recently-played";
+	const payload = {
+		method: "GET",
+		headers: {
+			Authorization: `Bearer ${access_token}`,
+		},
+	};
+	const res = await fetch(url, payload);
+	const data = await res.json();
+	return data;
+};
+
+const tracks = await getTopTracks();
+const played = await recentlyPlayed();
+const artist = await getTopArtists();
+---
+
+<section
+	class="flex flex-col md:grid md:grid-cols-2 p-3 gap-12 place-items-center w-full max-w-[1024px] m-auto"
+>
+	<!-- Title -->
+	<div
+		class="md:col-span-2 flex gap-4 justify-center items-center bg-base-100 border-white border-4 p-2 px-3 w-full drop-shadow-box"
+	>
+		<img class="w-14" src={SpotifyPic.src} />
+		<div class="w-fit">
+			<span class="flex flex-col text-white text-xl md:text-2xl w-fit"
+				>My Spotify Stats</span
+			>
+			<span class="text-white text-xs"> {()=> {
+			let date = new Date();
+
+			return ("Updated " + date.toLocaleString("en-PH"));
+			}}</span>
+		</div>
+	</div>
+
+	<!-- Recently Played -->
+	<div class="md:col-span-2 w-full max-w-md flex flex-col gap-2 items-center">
+		<!-- Label -->
+		<div
+			class="bg-green border-4 border-white p-2 text-white text-xl md:text-2xl w-full flex justify-center drop-shadow-box"
+		>
+			<span class="">Recently Played</span>
+		</div>
+		<!-- Button -->
+		{
+			(
+				<SpotifyButton
+					title={played.items[0].track.name}
+					artist={played.items[0].track.artists[0].name}
+					picture={played.items[0].track.album.images[0].url}
+					link={played.items[0].track.external_urls.spotify}
+				/>
+			)
+		}
+	</div>
+
+	<!-- Top Artist -->
+	<div class="w-fit max-w-md flex flex-col gap-2 items-center relative">
+		<!-- Label -->
+		<div
+			class="bg-green border-4 border-white p-2 text-white text-xl md:text-2xl w-full flex justify-center drop-shadow-box"
+		>
+			<span class="">Top Artist</span>
+		</div>
+		<!-- Button -->
+		{
+			<img
+			class="aspect-square w-full max-w-56 border-4 border-white object-cover drop-shadow-box"
+			src={artist.items[0].images[0].url}
+		/>
+		<div class="absolute -bottom-3 -right-3 rotate-2 text-right">
+			<BigText>{artist.items[0].name}</BigText>
+		</div>
+		}
+		<img
+			class="absolute w-16 -right-5 top-10 rotate-6 drop-shadow-box"
+			src={Note.src}
+		/>
+	</div>
+	<!-- Top Songs -->
+	<div class="w-full max-w-md flex flex-col gap-2 items-center">
+		<!-- Label -->
+		<div
+			class="bg-green border-4 border-white p-2 text-white text-xl md:text-2xl w-full flex justify-center drop-shadow-box"
+		>
+			<span class="">Monthly Top Songs</span>
+		</div>
+		<!-- Button -->
+		{
+			tracks.items.map((res:any) => (
+			<SpotifyButton
+			title={res.name}
+			artist={res.artists[0].name}
+			picture={res.album.images[0].url}
+			link={res.external_urls.spotify}
+		/>
+			))
+		}
+
+	</div>
+</section>

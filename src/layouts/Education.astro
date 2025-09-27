@@ -1,0 +1,35 @@
+---
+import SectionTitle from "../components/SectionTitle.astro";
+import PictureWindow from "../components/PictureWindow.astro";
+import EducationPic from "../images/gui/education.svg";
+---
+
+<section
+	class="flex flex-col p-3 gap-8 w-full max-w-[1440px] items-center self-center"
+>
+	<SectionTitle title="Education" image={EducationPic} />
+	<div class="w-full max-w-3xl grid grid-cols-1 auto-rows-fr gap-2">
+		<div
+			class="bg-yellow border-4 border-base-100 p-3 grid sm:grid-flow-col sm:grid-rows-2 gap-x-2"
+		>
+			<p class="text-xl truncate">BS Computer Engineering</p>
+			<p class="text-sm">University of the Philippines - Diliman</p>
+			<p
+				class="text-sm sm:text-lg truncate text-right row-span-2 sm:content-center"
+			>
+				2025 - Present
+			</p>
+		</div>
+		<div
+			class="bg-yellow border-4 border-base-100 p-3 grid sm:grid-flow-col sm:grid-rows-2 gap-x-2"
+		>
+			<p class="text-xl truncate">Basic Education (K-12)</p>
+			<p class="text-sm">Don Bosco Technical Institute - Makati</p>
+			<p
+				class="text-sm sm:text-lg truncate text-right row-span-2 sm:content-center"
+			>
+				2025 - Present
+			</p>
+		</div>
+	</div>
+</section>

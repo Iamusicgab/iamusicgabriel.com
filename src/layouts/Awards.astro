@@ -1,0 +1,45 @@
+---
+import PictureWindow from "../components/PictureWindow.astro";
+import Marquee from "../components/Marquee";
+import Trophy from "../images/gui/trophy.gif";
+
+interface Frontmatter {
+	award: string;
+	institution: string;
+	logo: string;
+	date: string;
+	image: string;
+	link: string;
+}
+
+const posts = await Astro.glob<Frontmatter>("../pages/awards/*.md");
+posts.sort((a, b) => {
+	let dateA = new Date(a.frontmatter.date);
+	let dateB = new Date(b.frontmatter.date);
+	return dateB.getTime() - dateA.getTime();
+});
+---
+
+<section class="flex flex-col">
+	<div class="relative">
+		<Marquee text="AWARDS" client:load />
+
+		<img class="absolute m-auto inset-0 w-32 -top-10" src={Trophy.src} />
+	</div>
+	<div
+		class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-content-center justify-items-center max-w-4xl m-auto gap-3 w-full p-3"
+	>
+		{
+			posts.slice(0, 6).map((post) => {
+				return (
+					<PictureWindow
+						title={post.frontmatter.award}
+						title2={post.frontmatter.institution}
+						image={post.frontmatter.image}
+						link={post.frontmatter.link}
+					/>
+				);
+			})
+		}
+	</div>
+</section>

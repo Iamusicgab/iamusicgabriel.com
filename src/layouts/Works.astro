@@ -1,44 +1,45 @@
 ---
-import Placeholder from "../components/Placeholder.astro";
-import Crdgrid from "../components/Crdgrid.astro";
-import Button from "../components/Button.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+import PictureWindow from "../components/PictureWindow.astro";
+import Education from "../images/gui/education.svg";
+
 interface Frontmatter {
 	title: string;
-	picture: string;
+	type: string;
 	date: string;
+	image: string;
+	link: string;
 }
+
 const posts = await Astro.glob<Frontmatter>("../pages/works/*.md");
 posts.sort((a, b) => {
 	let dateA = new Date(a.frontmatter.date);
 	let dateB = new Date(b.frontmatter.date);
 	return dateB.getTime() - dateA.getTime();
 });
+
+const postsUpdated = await import.meta.glob<Frontmatter>("../pages/works/*.md");
+console.log(postsUpdated);
 ---
 
-<container class="w-full max-w-screen-2xl p-5 gap-5 flex flex-col items-center">
-	<Placeholder color="bg-bpink" text="Works" textColor="text-bwhite" />
+<section
+	class="flex flex-col p-3 gap-8 w-full max-w-[1440px] items-center self-center"
+>
+	<SectionTitle title="Works" image={Education} />
 	<div
-		class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 gap-5 w-full max-w-screen-md place-items-center align-middle"
+		class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-content-center justify-items-center max-w-4xl m-auto gap-3 w-full"
 	>
 		{
-			posts
-				.slice(0, 3)
-				.map((post) => (
-					<Crdgrid
-						text={post.frontmatter.title}
-						href={post.url}
-						pic={post.frontmatter.picture}
-						date={post.frontmatter.date}
+			posts.slice(0, 6).map((post) => {
+				return (
+					<PictureWindow
+						title={post.frontmatter.title}
+						title2={post.frontmatter.type}
+						image={post.frontmatter.image}
+						link={post.frontmatter.link}
 					/>
-				))
+				);
+			})
 		}
 	</div>
-	<Button color="bg-blightviolet" text="View More" href="/works" />
-	<iframe
-		style="border-radius:12px"
-		src="https://open.spotify.com/embed/artist/2mWgy6G91EQdTadUqXwws4?utm_source=generator"
-		height="400"
-		allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-		loading="lazy"
-		class="shadow-xl w-full md:max-w-xl"></iframe>
-</container>
+</section>

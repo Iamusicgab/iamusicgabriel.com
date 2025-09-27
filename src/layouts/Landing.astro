@@ -1,19 +1,69 @@
 ---
-import Crds from "../components/Crds.astro";
+import Window from "../components/Window.astro";
+import Marquee from "../components/Marquee";
+
+import Coding from "../images/coding.gif";
+import Hero from "../images/my-images/hero.png";
+import Iamusicgabriel from "../images/iamusicgabriel.gif";
 ---
 
-<container
-	class="flex flex-col md:flex-row justify-center md:justify-around items-center h-screen w-full p-5 gap-10 max-w-screen-2xl"
->
-	<Crds
-		pic="/hero.png"
-		alt="Hero Picture"
-		text="@iamusicgabriel"
-		svg="/star2.svg"
-		color="bg-blightblue"
-		textStyle="text-bblack"
-	/>
-	<p class="text-xl md:text-2xl lg:text-3xl text-center md:text-right max-w-96">
-		The narcissistic and arrogant guy. Welcome to my world, my friend.
-	</p>
-</container>
+<section class="flex flex-col items-center overflow-hidden">
+	<div
+		class="flex flex-col items-center md:items-baseline max-w-lg md:max-w-lg lg:w-full lg:max-w-3xl relative mt-36 md:mb-20 lg:my-40"
+		id="HeroTitleContainer"
+	>
+		<div
+			class="absolute w-fit left-1/2 transform -translate-x-35 -translate-y-25 md:-translate-x-80 md:-translate-y-24 lg:-translate-x-5 lg:translate-y-0"
+		>
+			<Window title="intro.tsx" color="bg-pink" padding="p-3">
+				<div class="flex flex-col w-48 md:w-64 lg:w-80">
+					<span class="opacity-50 text-xs md:text-base"
+						>const intro = () => &lbrace;</span
+					>
+					<span class="indent-4 opacity-50 text-xs md:text-base">return (</span>
+					<span class="text-lg md:text-3xl leading-5 md:leading-8">
+						the narcissistic and arrogant a**hole. welcome to my world, my
+						friend.
+					</span>
+					<span class="indent-4 opacity-50 text-xs md:text-base">);</span>
+					<span class="opacity-50 text-xs md:text-base">&rbrace;;</span>
+				</div>
+			</Window>
+		</div>
+		<div
+			class="absolute bottom-15 md:top-0 md:left-1/2 md:transform md:-translate-x-70 md:translate-y-85 left-0 z-10 scale-70 md:scale-100 lg:-translate-x-90 lg:-translate-y-10 lg:-z-10"
+		>
+			<Window
+				title="rainbow.tsx"
+				css="bg-gradient-to-r from-violet to-pink"
+				padding="p-3"
+			>
+				<div class="w-30 md:w-40">
+					<span class="text-white"
+						>"parati't parating may bahaghari sa bawat sulok ng lipunan."</span
+					>
+				</div>
+			</Window>
+		</div>
+		<div
+			class="absolute top-0 md:left-1/2 md:top-0 md:transform md:translate-x-20 md:translate-y-10 -z-10 right-5 lg:z-10 lg:translate-x-40 lg:translate-y-50"
+		>
+			<Window title="monke.gif">
+				<img class="w-30 md:w-52" src={Coding.src} />
+			</Window>
+		</div>
+		<div
+			class="absolute bottom-30 right-4 md:bottom-0 md:right-0 md:left-1/2 md:transform md:translate-x-10 md:-translate-y-40 z-10 md:z-20 lg:-translate-x-100 lg:-translate-y-40"
+		>
+			<Window title="quote.tsx" color="bg-yellow" padding="p-3">
+				<span class="text-xs md:text-base">think different.</span>
+			</Window>
+		</div>
+		<img class="w-11/12 md:w-110 drop-shadow-box" src={Hero.src} />
+		<img
+			class="-rotate-6 absolute z-10 bottom-0 md:bottom-0 md:w-3xl lg:w-full drop-shadow-lg p-3"
+			src={Iamusicgabriel.src}
+		/>
+	</div>
+</section>
+<Marquee text="IAMUSICGABRIEL" client:load />

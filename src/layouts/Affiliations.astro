@@ -1,0 +1,43 @@
+---
+import SectionTitle from "../components/SectionTitle.astro";
+import AffiliationsText from "../components/AffiliationsText.astro";
+import EducationPic from "../images/gui/education.svg";
+---
+
+<section
+	class="flex flex-col p-3 gap-8 w-full max-w-[1440px] items-center self-center"
+>
+	<SectionTitle title="Affiliations" image={EducationPic} />
+	<div class="w-full max-w-3xl grid grid-cols-1 auto-rows-fr gap-2">
+		<AffiliationsText
+			affiliation="Vision Media Productions"
+			position="Member"
+			date="2021 - Present"
+		/>
+		<AffiliationsText
+			affiliation="DB Makati SHS Student Government"
+			position="President"
+			date="2024 - 2025"
+		/>
+		<AffiliationsText
+			affiliation="DB Makati Hack Club"
+			position="Founder, Co-Lead"
+			date="2024 - 2025"
+		/>
+		<AffiliationsText
+			affiliation="DB Makati JHS Student Council"
+			position="President"
+			date="2022 - 2023"
+		/>
+		<AffiliationsText
+			affiliation="DB Makati JHS Student Council"
+			position="Grade 9 Representative"
+			date="2021 - 2022"
+		/>
+		<AffiliationsText
+			affiliation="Boscorale"
+			position="Member"
+			date="2019 - 2022"
+		/>
+	</div>
+</section>

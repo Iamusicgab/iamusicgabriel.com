@@ -1,15 +1,23 @@
+// @ts-check
 import { defineConfig } from "astro/config";
 
-import tailwind from "@astrojs/tailwind";
-import vercel from "@astrojs/vercel/serverless";
+import tailwindcss from "@tailwindcss/vite";
+
+import react from "@astrojs/react";
+
+import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
-	integrations: [tailwind()],
+	vite: {
+		plugins: [tailwindcss()],
+		assetsInclude: ["**/*.glb"],
+	},
+
+	integrations: [react()],
 	output: "server",
-	adapter: vercel({
-		webAnalytics: {
-			enabled: true,
-		},
-	}),
+	adapter: vercel(),
+	server: {
+		allowedHosts: ["rare-deer-allow.loca.lt"],
+	},
 });

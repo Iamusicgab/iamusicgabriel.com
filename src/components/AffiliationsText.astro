@@ -1,0 +1,16 @@
+---
+const { affiliation, position, date } = Astro.props;
+---
+
+<div
+	class="bg-orange border-4 border-white p-3 flex flex-col sm:flex-row justify-between gap-2 sm:items-center sm:truncate"
+>
+	<div>
+		<p class="text-xl text-white">{affiliation}</p>
+		<p class="text-sm text-white">{position}</p>
+	</div>
+
+	<p class="text-sm sm:text-xl text-white text-right block whitespace-nowrap">
+		{date}
+	</p>
+</div>
