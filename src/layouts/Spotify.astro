@@ -5,6 +5,8 @@ import SpotifyPic from "../images/gui/spotify.png";
 
 import BigText from "../components/BigText.astro";
 
+import Playing from "../images/gui/playing.gif";
+
 import Note from "../images/gui/note.gif";
 import "dotenv/config";
 import QueryString from "query-string";
@@ -58,9 +60,40 @@ const getTopTracks = async () => {
 	return data;
 };
 
-const recentlyPlayed = async () => {
+const getCurrentlyPlaying = async () => {
 	const { access_token } = await getAccessToken();
-	const url = "https://api.spotify.com/v1/me/player/recently-played";
+	const url = "https://api.spotify.com/v1/me/player/currently-playing";
+	const payload = {
+		method: "GET",
+		headers: {
+			Authorization: `Bearer ${access_token}`,
+		},
+	};
+	const res = await fetch(url, payload);
+	
+	// Check if response is empty (204 No Content)
+	if (res.status === 204 || !res.ok) {
+		return null;
+	}
+	
+	// Check if response has content before parsing JSON
+	const text = await res.text();
+	if (!text) {
+		return null;
+	}
+	
+	try {
+		const data = JSON.parse(text);
+		return data;
+	} catch (error) {
+		console.error('Error parsing JSON:', error);
+		return null;
+	}
+};
+
+const getRecentlyPlayed = async () => {
+	const { access_token } = await getAccessToken();
+	const url = "https://api.spotify.com/v1/me/player/recently-played?limit=1";
 	const payload = {
 		method: "GET",
 		headers: {
@@ -73,9 +106,46 @@ const recentlyPlayed = async () => {
 };
 
 const tracks = await getTopTracks();
-const played = await recentlyPlayed();
+const currentlyPlaying = await getCurrentlyPlaying();
+const recentlyPlayed = await getRecentlyPlayed();
 const artist = await getTopArtists();
 ---
+
+<style>
+.music-bars {
+	display: flex;
+	align-items: flex-end;
+	gap: 2px;
+	height: 20px;
+}
+
+.bar {
+	width: 3px;
+	background-color: white;
+	animation: bounce 1.5s ease-in-out infinite;
+}
+
+.bar:nth-child(1) {
+	animation-delay: 0s;
+}
+
+.bar:nth-child(2) {
+	animation-delay: 0.3s;
+}
+
+.bar:nth-child(3) {
+	animation-delay: 0.6s;
+}
+
+@keyframes bounce {
+	0%, 100% {
+		height: 6px;
+	}
+	50% {
+		height: 20px;
+	}
+}
+</style>
 
 <section
 	class="flex flex-col md:grid md:grid-cols-2 p-3 gap-12 place-items-center w-full max-w-[1024px] m-auto"
@@ -89,11 +159,7 @@ const artist = await getTopArtists();
 			<span class="flex flex-col text-white text-xl md:text-2xl w-fit"
 				>My Spotify Stats</span
 			>
-			<span class="text-white text-xs"> {()=> {
-			let date = new Date();
-
-			return ("Updated " + date.toLocaleString("en-PH"));
-			}}</span>
+			<span class="text-white text-xs" id="last-updated">Loading...</span>
 		</div>
 	</div>
 
@@ -101,19 +167,38 @@ const artist = await getTopArtists();
 	<div class="md:col-span-2 w-full max-w-md flex flex-col gap-2 items-center">
 		<!-- Label -->
 		<div
-			class="bg-green border-4 border-white p-2 text-white text-xl md:text-2xl w-full flex justify-center drop-shadow-box"
+			class="bg-green border-4 border-white p-2 text-white text-xl md:text-2xl w-full flex justify-center items-center gap-3 drop-shadow-box"
 		>
-			<span class="">Recently Played</span>
+			<img class="h-10" src={Playing.src} />
+			{currentlyPlaying && currentlyPlaying.item && (
+				<div class="music-bars">
+					<div class="bar"></div>
+					<div class="bar"></div>
+					<div class="bar"></div>
+				</div>
+			)}
+			<span class="">{currentlyPlaying && currentlyPlaying.item ? "Currently Listening" : "Recently Played"}</span>
 		</div>
 		<!-- Button -->
 		{
-			(
+			currentlyPlaying && currentlyPlaying.item ? (
 				<SpotifyButton
-					title={played.items[0].track.name}
-					artist={played.items[0].track.artists[0].name}
-					picture={played.items[0].track.album.images[0].url}
-					link={played.items[0].track.external_urls.spotify}
+					title={currentlyPlaying.item.name}
+					artist={currentlyPlaying.item.artists[0].name}
+					picture={currentlyPlaying.item.album.images[0].url}
+					link={currentlyPlaying.item.external_urls.spotify}
 				/>
+			) : recentlyPlayed && recentlyPlayed.items && recentlyPlayed.items[0] ? (
+				<SpotifyButton
+					title={recentlyPlayed.items[0].track.name}
+					artist={recentlyPlayed.items[0].track.artists[0].name}
+					picture={recentlyPlayed.items[0].track.album.images[0].url}
+					link={recentlyPlayed.items[0].track.external_urls.spotify}
+				/>
+			) : (
+				<div class="bg-gray-500 border-4 border-white p-4 text-white text-center w-full drop-shadow-box">
+					<span>No music data available</span>
+				</div>
 			)
 		}
 	</div>
@@ -163,3 +248,31 @@ const artist = await getTopArtists();
 
 	</div>
 </section>
+
+<script>
+	// Store the page load time as the "last updated" time
+	const pageLoadTime = new Date();
+	
+	function updateTimestamp() {
+		const now = new Date();
+		const diffInMs = now.getTime() - pageLoadTime.getTime();
+		const diffInMinutes = Math.floor(diffInMs / (1000 * 60));
+		
+		const timestampElement = document.getElementById('last-updated');
+		if (timestampElement) {
+			if (diffInMinutes < 1) {
+				timestampElement.textContent = "Updated just now";
+			} else if (diffInMinutes === 1) {
+				timestampElement.textContent = "Updated 1 minute ago";
+			} else {
+				timestampElement.textContent = `Updated ${diffInMinutes} minutes ago`;
+			}
+		}
+	}
+	
+	// Update timestamp immediately
+	updateTimestamp();
+	
+	// Update timestamp every 30 seconds
+	setInterval(updateTimestamp, 30000);
+</script>
